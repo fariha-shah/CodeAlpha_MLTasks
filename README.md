@@ -7,7 +7,7 @@
 ![Inference Engine](https://img.shields.io/badge/Inference-Client--Side%20Neural%20ML-2563eb?style=for-the-badge&logo=javascript&logoColor=white)
 ![Icons](https://img.shields.io/badge/Icons-Lucide%20Icons%20(Zero%20Emojis)-ccff00?style=for-the-badge)
 
-### Live Interactive Web App: [Deployable on Netlify](https://app.netlify.com/drop) | Repository: [fariha-shah/CodeAlpha_MLTasks](https://github.com/fariha-shah/CodeAlpha_MLTasks)
+### Repository: [fariha-shah/CodeAlpha_MLTasks](https://github.com/fariha-shah/CodeAlpha_MLTasks)
 
 <p align="center">
   <strong>An artisan Machine Learning Web Studio unifying 3 production-grade ML tasks into a high-performance, human-crafted dashboard styled in Midnight Black, Electric Cobalt Blue, and Acid Lime with Lucide Icons and zero server dependencies.</strong>
@@ -29,7 +29,6 @@
 - [Comparative Benchmarks](#comparative-benchmarks)
 - [Project Architecture & Directory Structure](#project-architecture--directory-structure)
 - [Local Setup](#local-setup)
-- [Deploying Live to Netlify (Step-by-Step)](#deploying-live-to-netlify-step-by-step)
 - [Pushing to GitHub](#pushing-to-github)
 - [Internship Credentials](#internship-credentials)
 
@@ -125,21 +124,6 @@ cd "D:\CodeAlpha-Tasks"
 python -m http.server 8080
 ```
 Open your browser and navigate to: **`http://localhost:8080`**
-
----
-
-## Deploying Live to Netlify (Step-by-Step)
-
-### Method 1: Instant Drag & Drop (30 Seconds)
-1. Go to [https://app.netlify.com/drop](https://app.netlify.com/drop).
-2. Log in with your Netlify account.
-3. Drag the entire `D:\CodeAlpha-Tasks` folder into the Netlify drop zone.
-4. Netlify will deploy your site in ~15 seconds with a free live URL!
-
-### Method 2: Connect via GitHub
-1. In Netlify Dashboard, click **"Add new site"** ➔ **"Import an existing project"** ➔ **GitHub**.
-2. Select `fariha-shah/CodeAlpha_MLTasks`.
-3. Set **Publish directory** to `.` and click **Deploy Site**.
 
 ---
 
