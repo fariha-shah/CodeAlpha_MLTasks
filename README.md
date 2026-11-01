@@ -5,7 +5,7 @@
 ![CodeAlpha ML Studio](https://img.shields.io/badge/CodeAlpha-Machine%20Learning%20Internship-2563eb?style=for-the-badge&logo=python&logoColor=white)
 
 ![Inference Engine](https://img.shields.io/badge/Inference-Client--Side%20Neural%20ML-2563eb?style=for-the-badge&logo=javascript&logoColor=white)
-![Icons](https://img.shields.io/badge/Icons-Lucide%20Icons%20(Zero%20Emojis)-ccff00?style=for-the-badge)
+
 
 ### Repository: [fariha-shah/CodeAlpha_MLTasks](https://github.com/fariha-shah/CodeAlpha_MLTasks)
 
