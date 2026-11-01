@@ -1,6 +1,6 @@
 /**
  * Main Application Orchestrator - CodeAlpha ML Suite
- * Handles routing, themes, audio synthesis, toasts, and module lifecycles.
+ * Handles routing, themes, audio synthesis, toasts, and Lucide icons.
  */
 
 class App {
@@ -28,7 +28,12 @@ class App {
     window.handwritingEngine = new window.HandwritingRecognitionEngine();
     window.benchmarksEngine = new window.BenchmarksEngine();
 
-    console.log('CodeAlpha ML Suite App Ready.');
+    // Render Lucide icons
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+
+    console.log('CodeAlpha ML Suite App Ready (Powered by Lucide Icons).');
   }
 
   // --- Theme Management ---
@@ -40,8 +45,9 @@ class App {
     const themeBtn = document.getElementById('theme-toggle-btn');
     if (themeBtn) {
       themeBtn.innerHTML = theme === 'dark'
-        ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`
-        : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+        ? `<i data-lucide="sun" style="width:18px; height:18px;"></i>`
+        : `<i data-lucide="moon" style="width:18px; height:18px;"></i>`;
+      if (window.lucide) window.lucide.createIcons();
     }
   }
 
@@ -89,7 +95,7 @@ class App {
     } else if (type === 'success') {
       osc.type = 'triangle';
       osc.frequency.setValueAtTime(440, t);
-      osc.frequency.setValueAtTime(659.25, t + 0.08); // E5
+      osc.frequency.setValueAtTime(659.25, t + 0.08);
       gain.gain.setValueAtTime(0.12, t);
       gain.gain.exponentialRampToValueAtTime(0.001, t + 0.25);
       osc.start(t);
@@ -112,9 +118,10 @@ class App {
         this.soundEnabled = !this.soundEnabled;
         btn.classList.toggle('muted', !this.soundEnabled);
         btn.innerHTML = this.soundEnabled
-          ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>`
-          : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>`;
-        this.toast(this.soundEnabled ? 'Sound feedback on' : 'Sound muted', 'info');
+          ? `<i data-lucide="volume-2" style="width:18px; height:18px;"></i>`
+          : `<i data-lucide="volume-x" style="width:18px; height:18px;"></i>`;
+        if (window.lucide) window.lucide.createIcons();
+        this.toast(this.soundEnabled ? 'Audio feedback enabled' : 'Audio muted', 'info');
       });
     }
   }
@@ -130,7 +137,6 @@ class App {
       });
     });
 
-    // Handle hash links
     window.addEventListener('hashchange', () => {
       const hash = window.location.hash.replace('#', '');
       if (hash) this.navigateTo(hash, false);
@@ -149,18 +155,15 @@ class App {
     this.playSound('switch');
     this.currentSection = sectionId;
 
-    // Update section visibility
     document.querySelectorAll('.app-section').forEach(sec => {
       sec.classList.remove('active');
     });
     targetSection.classList.add('active');
 
-    // Update nav links
     document.querySelectorAll('[data-target-section]').forEach(link => {
       link.classList.toggle('active', link.dataset.targetSection === sectionId);
     });
 
-    // Close mobile menu if open
     const mobileMenu = document.getElementById('mobile-drawer');
     if (mobileMenu) mobileMenu.classList.remove('open');
 
@@ -168,6 +171,7 @@ class App {
       window.location.hash = sectionId;
     }
 
+    if (window.lucide) window.lucide.createIcons();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -180,6 +184,7 @@ class App {
       toggleBtn.addEventListener('click', () => {
         drawer.classList.add('open');
         this.playSound('click');
+        if (window.lucide) window.lucide.createIcons();
       });
     }
 
@@ -200,6 +205,7 @@ class App {
       guideBtn.addEventListener('click', () => {
         modal.classList.add('open');
         this.playSound('click');
+        if (window.lucide) window.lucide.createIcons();
       });
     }
 
@@ -217,16 +223,18 @@ class App {
     }
   }
 
-  // --- Floating Toast Notifications ---
+  // --- Toast Notifications using Lucide Icons ---
   toast(message, type = 'info') {
     const container = document.getElementById('toast-container');
     if (!container) return;
 
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
-    const icon = type === 'success' ? '✓' : type === 'warning' ? '⚠' : 'ℹ';
-    toast.innerHTML = `<span class="toast-icon">${icon}</span> <span class="toast-msg">${message}</span>`;
+    const iconName = type === 'success' ? 'check-circle-2' : type === 'warning' ? 'alert-triangle' : 'info';
+    toast.innerHTML = `<span class="toast-icon"><i data-lucide="${iconName}" style="width:16px; height:16px;"></i></span> <span class="toast-msg">${message}</span>`;
     container.appendChild(toast);
+
+    if (window.lucide) window.lucide.createIcons();
 
     setTimeout(() => {
       toast.classList.add('toast-show');
@@ -239,7 +247,6 @@ class App {
   }
 }
 
-// Global bootstrap
 document.addEventListener('DOMContentLoaded', () => {
   window.app = new App();
 });

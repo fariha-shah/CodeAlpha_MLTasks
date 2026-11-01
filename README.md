@@ -2,39 +2,40 @@
 
 <div align="center">
 
-![CodeAlpha ML Studio Banner](https://img.shields.io/badge/CodeAlpha-Machine%20Learning%20Internship-2563eb?style=for-the-badge&logo=python&logoColor=white)
-![Build Status](https://img.shields.io/badge/Netlify-Ready%20to%20Deploy-ccff00?style=for-the-badge&logo=netlify&logoColor=06080d)
+![CodeAlpha ML Studio](https://img.shields.io/badge/CodeAlpha-Machine%20Learning%20Internship-2563eb?style=for-the-badge&logo=python&logoColor=white)
+![Netlify Ready](https://img.shields.io/badge/Netlify-Ready%20to%20Deploy-ccff00?style=for-the-badge&logo=netlify&logoColor=06080d)
 ![Inference Engine](https://img.shields.io/badge/Inference-Client--Side%20Neural%20ML-2563eb?style=for-the-badge&logo=javascript&logoColor=white)
-![Theme](https://img.shields.io/badge/Theme-Midnight%20Black%20%7C%20Cobalt%20%7C%20Acid%20Lime-06080d?style=for-the-badge)
+![Icons](https://img.shields.io/badge/Icons-Lucide%20Icons%20(Zero%20Emojis)-ccff00?style=for-the-badge)
 
-### 🌟 **Live Interactive Web App**: [Deployable on Netlify](https://app.netlify.com/drop) | 📁 **Repository**: [fariha-shah/CodeAlpha_Tasks](https://github.com/fariha-shah/CodeAlpha_Tasks)
+### Live Interactive Web App: [Deployable on Netlify](https://app.netlify.com/drop) | Repository: [fariha-shah/CodeAlpha_Tasks](https://github.com/fariha-shah/CodeAlpha_Tasks)
 
 <p align="center">
-  <strong>An artisan Machine Learning Web Studio unifying 3 production-grade ML tasks into a high-performance, human-crafted dashboard styled in Midnight Black, Electric Cobalt Blue, and Acid Lime with zero server dependencies.</strong>
+  <strong>An artisan Machine Learning Web Studio unifying 3 production-grade ML tasks into a high-performance, human-crafted dashboard styled in Midnight Black, Electric Cobalt Blue, and Acid Lime with Lucide Icons and zero server dependencies.</strong>
 </p>
 
 </div>
 
 ---
 
-## 📑 Table of Contents
+## Table of Contents
 
-- [Overview & Highlights](#-overview--highlights)
-- [Bespoke Visual Design & Color Palette](#-bespoke-visual-design--color-palette)
-- [Accurate Model Pipelines & Features](#-accurate-model-pipelines--features)
+- [Overview & Highlights](#overview--highlights)
+- [Bespoke Visual Design & Color Palette](#bespoke-visual-design--color-palette)
+- [Lucide Icons Integration](#lucide-icons-integration)
+- [Accurate Model Pipelines & Features](#accurate-model-pipelines--features)
   - [Task 1: Credit Risk Scoring (100 Decision Trees)](#task-1--credit-risk-scoring)
   - [Task 2: Speech Emotion Recognition (Real Acoustic Analysis)](#task-2--speech-emotion-recognition)
   - [Task 3: Handwritten Digit Recognition (MNIST Center-of-Mass Pipeline)](#task-3--handwritten-digit-recognition)
-- [Comparative Benchmarks](#-comparative-benchmarks)
-- [Project Architecture & Directory Structure](#-project-architecture--directory-structure)
-- [Local Setup](#-local-setup)
-- [Deploying Live to Netlify (Step-by-Step)](#-deploying-live-to-netlify-step-by-step)
-- [Pushing to GitHub](#-pushing-to-github)
-- [Internship Credentials](#-internship-credentials)
+- [Comparative Benchmarks](#comparative-benchmarks)
+- [Project Architecture & Directory Structure](#project-architecture--directory-structure)
+- [Local Setup](#local-setup)
+- [Deploying Live to Netlify (Step-by-Step)](#deploying-live-to-netlify-step-by-step)
+- [Pushing to GitHub](#pushing-to-github)
+- [Internship Credentials](#internship-credentials)
 
 ---
 
-## 🚀 Overview & Highlights
+## Overview & Highlights
 
 During the **CodeAlpha Machine Learning Internship**, three distinct domains of machine learning were explored, implemented, and optimized:
 1. **Tabular Financial ML**: Credit default risk classification on the German Credit dataset.
@@ -45,7 +46,7 @@ All three tasks run **100% natively in the web browser** via pure vectorized Flo
 
 ---
 
-## 🎨 Bespoke Visual Design & Color Palette
+## Bespoke Visual Design & Color Palette
 
 The entire studio is crafted in a signature three-color palette:
 - **Midnight Black (`#06080d`)**: Deep obsidian velvet backdrop and subtle glassmorphism surfaces.
@@ -54,7 +55,13 @@ The entire studio is crafted in a signature three-color palette:
 
 ---
 
-## 🧠 Accurate Model Pipelines & Features
+## Lucide Icons Integration
+
+All generic emojis have been replaced across the application with **Lucide Icons** (`lucide.min.js`), rendering clean, scalable vector graphics for all UI controls, navigation items, affective states, and analytical reports.
+
+---
+
+## Accurate Model Pipelines & Features
 
 ### Task 1 — Credit Risk Scoring
 
@@ -65,7 +72,7 @@ The entire studio is crafted in a signature three-color palette:
   * 1-Click Persona Presets: *Alice (Low Risk)*, *Bob (High Risk)*, and *Carol (Moderate)*.
   * Real-time FICO Radial Gauge (300 to 850 score) with calibrated risk tiers.
   * Monthly loan installment calculator with risk-adjusted APR.
-  * AI underwriter advice and downloadable `.txt` assessment reports.
+  * AI underwriter advice and downloadable assessment reports.
 
 ---
 
@@ -94,7 +101,7 @@ The entire studio is crafted in a signature three-color palette:
 
 ---
 
-## 📊 Comparative Benchmarks
+## Comparative Benchmarks
 
 | Task | Model Evaluated | Dataset | Test Accuracy | ROC-AUC / Macro F1 | Selection |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -108,7 +115,7 @@ The entire studio is crafted in a signature three-color palette:
 
 ---
 
-## 💻 Local Setup
+## Local Setup
 
 ```bash
 # Navigate to the project directory
@@ -121,7 +128,7 @@ Open your browser and navigate to: **`http://localhost:8080`**
 
 ---
 
-## 🌐 Deploying Live to Netlify (Step-by-Step)
+## Deploying Live to Netlify (Step-by-Step)
 
 ### Method 1: Instant Drag & Drop (30 Seconds)
 1. Go to [https://app.netlify.com/drop](https://app.netlify.com/drop).
@@ -136,18 +143,18 @@ Open your browser and navigate to: **`http://localhost:8080`**
 
 ---
 
-## 📤 Pushing to GitHub
+## Pushing to GitHub
 
 ```bash
 cd "D:\CodeAlpha-Tasks"
 git add .
-git commit -m "Update bespoke UI theme and accurate model predictions"
+git commit -m "Replace all emojis with Lucide icons across entire application"
 git push origin main
 ```
 
 ---
 
-## 👩‍💻 Internship Credentials
+## Internship Credentials
 
 - **Organization**: [CodeAlpha](https://www.codealpha.tech/)
 - **Domain**: Machine Learning & Artificial Intelligence

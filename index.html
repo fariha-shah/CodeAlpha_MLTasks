@@ -13,6 +13,9 @@
 
   <!-- Master Stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Local Lucide Icons Script -->
+  <script src="js/lucide.min.js"></script>
 </head>
 <body>
 
@@ -33,32 +36,62 @@
       <!-- Desktop Navigation Links -->
       <nav>
         <ul class="nav-links">
-          <li><a href="#home" class="nav-link active" data-target-section="home">⚡ Hub</a></li>
-          <li><a href="#credit" class="nav-link" data-target-section="credit">💳 Credit Risk</a></li>
-          <li><a href="#emotion" class="nav-link" data-target-section="emotion">🎙️ Speech Emotion</a></li>
-          <li><a href="#handwriting" class="nav-link" data-target-section="handwriting">✍️ MNIST Canvas</a></li>
-          <li><a href="#benchmarks" class="nav-link" data-target-section="benchmarks">📊 Benchmarks</a></li>
-          <li><a href="#docs" class="nav-link" data-target-section="docs">📖 Guide</a></li>
+          <li>
+            <a href="#home" class="nav-link active" data-target-section="home">
+              <i data-lucide="layout-dashboard" style="width:16px; height:16px;"></i>
+              <span>Hub</span>
+            </a>
+          </li>
+          <li>
+            <a href="#credit" class="nav-link" data-target-section="credit">
+              <i data-lucide="credit-card" style="width:16px; height:16px;"></i>
+              <span>Credit Risk</span>
+            </a>
+          </li>
+          <li>
+            <a href="#emotion" class="nav-link" data-target-section="emotion">
+              <i data-lucide="mic" style="width:16px; height:16px;"></i>
+              <span>Speech Emotion</span>
+            </a>
+          </li>
+          <li>
+            <a href="#handwriting" class="nav-link" data-target-section="handwriting">
+              <i data-lucide="pen-tool" style="width:16px; height:16px;"></i>
+              <span>MNIST Canvas</span>
+            </a>
+          </li>
+          <li>
+            <a href="#benchmarks" class="nav-link" data-target-section="benchmarks">
+              <i data-lucide="bar-chart-2" style="width:16px; height:16px;"></i>
+              <span>Benchmarks</span>
+            </a>
+          </li>
+          <li>
+            <a href="#docs" class="nav-link" data-target-section="docs">
+              <i data-lucide="book-open" style="width:16px; height:16px;"></i>
+              <span>Guide</span>
+            </a>
+          </li>
         </ul>
       </nav>
 
       <!-- Action Buttons -->
       <div class="nav-actions">
         <button id="theme-toggle-btn" class="icon-btn" title="Toggle Theme" aria-label="Toggle Theme">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <i data-lucide="sun" style="width:18px; height:18px;"></i>
         </button>
         <button id="sound-toggle-btn" class="icon-btn" title="Toggle Sound Feedback" aria-label="Toggle Sound">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <i data-lucide="volume-2" style="width:18px; height:18px;"></i>
         </button>
         <button id="deploy-guide-btn" class="btn-lime">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          Deploy Guide
+          <i data-lucide="zap" style="width:16px; height:16px;"></i>
+          <span>Deploy Guide</span>
         </button>
         <a href="https://github.com/fariha-shah/CodeAlpha_Tasks" target="_blank" rel="noopener noreferrer" class="icon-btn" title="GitHub Repository">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         </a>
         <button id="mobile-menu-btn" class="icon-btn mobile-menu-btn" aria-label="Open Mobile Menu">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <i data-lucide="menu" style="width:20px; height:20px;"></i>
         </button>
       </div>
     </div>
@@ -68,15 +101,47 @@
   <aside id="mobile-drawer" class="mobile-drawer">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
       <span style="font-weight:800; font-size:1.15rem; color:var(--acid-lime);">Navigation</span>
-      <button id="mobile-drawer-close" class="icon-btn" aria-label="Close Menu">✕</button>
+      <button id="mobile-drawer-close" class="icon-btn" aria-label="Close Menu">
+        <i data-lucide="x" style="width:18px; height:18px;"></i>
+      </button>
     </div>
     <ul style="list-style:none; display:flex; flex-direction:column; gap:0.5rem;">
-      <li><a href="#home" class="nav-link active" data-target-section="home">⚡ Hub Overview</a></li>
-      <li><a href="#credit" class="nav-link" data-target-section="credit">💳 Credit Scoring</a></li>
-      <li><a href="#emotion" class="nav-link" data-target-section="emotion">🎙️ Speech Emotion</a></li>
-      <li><a href="#handwriting" class="nav-link" data-target-section="handwriting">✍️ Digit Canvas</a></li>
-      <li><a href="#benchmarks" class="nav-link" data-target-section="benchmarks">📊 Benchmarks</a></li>
-      <li><a href="#docs" class="nav-link" data-target-section="docs">📖 Guide</a></li>
+      <li>
+        <a href="#home" class="nav-link active" data-target-section="home">
+          <i data-lucide="layout-dashboard" style="width:16px; height:16px;"></i>
+          <span>Hub Overview</span>
+        </a>
+      </li>
+      <li>
+        <a href="#credit" class="nav-link" data-target-section="credit">
+          <i data-lucide="credit-card" style="width:16px; height:16px;"></i>
+          <span>Credit Scoring</span>
+        </a>
+      </li>
+      <li>
+        <a href="#emotion" class="nav-link" data-target-section="emotion">
+          <i data-lucide="mic" style="width:16px; height:16px;"></i>
+          <span>Speech Emotion</span>
+        </a>
+      </li>
+      <li>
+        <a href="#handwriting" class="nav-link" data-target-section="handwriting">
+          <i data-lucide="pen-tool" style="width:16px; height:16px;"></i>
+          <span>Digit Canvas</span>
+        </a>
+      </li>
+      <li>
+        <a href="#benchmarks" class="nav-link" data-target-section="benchmarks">
+          <i data-lucide="bar-chart-2" style="width:16px; height:16px;"></i>
+          <span>Benchmarks</span>
+        </a>
+      </li>
+      <li>
+        <a href="#docs" class="nav-link" data-target-section="docs">
+          <i data-lucide="book-open" style="width:16px; height:16px;"></i>
+          <span>Guide</span>
+        </a>
+      </li>
     </ul>
   </aside>
 
@@ -102,10 +167,10 @@
           <div class="hero-actions">
             <a href="#credit" class="btn-lime" data-target-section="credit">
               <span>Launch Live Models</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              <i data-lucide="arrow-right" style="width:18px; height:18px;"></i>
             </a>
             <a href="#docs" class="btn-cobalt" data-target-section="docs">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <i data-lucide="file-text" style="width:18px; height:18px;"></i>
               <span>Developer &amp; Netlify Guide</span>
             </a>
           </div>
@@ -117,7 +182,9 @@
         <!-- Task 1 Card -->
         <div class="project-card">
           <div class="card-top">
-            <div class="card-icon-badge" style="color:var(--acid-lime);">💳</div>
+            <div class="card-icon-badge" style="color:var(--acid-lime);">
+              <i data-lucide="credit-card" style="width:28px; height:28px;"></i>
+            </div>
             <div class="card-task-num">Task 1 • Financial ML</div>
             <h3 class="card-title">Credit Risk Scoring</h3>
             <p class="card-desc">
@@ -141,7 +208,7 @@
             </div>
             <button class="card-cta-btn" data-target-section="credit">
               <span>Launch Risk Calculator</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              <i data-lucide="chevron-right" style="width:16px; height:16px;"></i>
             </button>
           </div>
         </div>
@@ -149,7 +216,9 @@
         <!-- Task 2 Card -->
         <div class="project-card">
           <div class="card-top">
-            <div class="card-icon-badge" style="color:var(--electric-cobalt-light);">🎙️</div>
+            <div class="card-icon-badge" style="color:var(--electric-cobalt-light);">
+              <i data-lucide="mic" style="width:28px; height:28px;"></i>
+            </div>
             <div class="card-task-num">Task 2 • Speech Audio ML</div>
             <h3 class="card-title">Speech Emotion AI</h3>
             <p class="card-desc">
@@ -173,7 +242,7 @@
             </div>
             <button class="card-cta-btn" data-target-section="emotion">
               <span>Open Voice Analyzer</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              <i data-lucide="chevron-right" style="width:16px; height:16px;"></i>
             </button>
           </div>
         </div>
@@ -181,7 +250,9 @@
         <!-- Task 3 Card -->
         <div class="project-card">
           <div class="card-top">
-            <div class="card-icon-badge" style="color:var(--acid-lime);">✍️</div>
+            <div class="card-icon-badge" style="color:var(--acid-lime);">
+              <i data-lucide="pen-tool" style="width:28px; height:28px;"></i>
+            </div>
             <div class="card-task-num">Task 3 • Computer Vision</div>
             <h3 class="card-title">Handwritten Digit Recognition</h3>
             <p class="card-desc">
@@ -205,7 +276,7 @@
             </div>
             <button class="card-cta-btn" data-target-section="handwriting">
               <span>Open Drawing Studio</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              <i data-lucide="chevron-right" style="width:16px; height:16px;"></i>
             </button>
           </div>
         </div>
@@ -329,7 +400,7 @@
           </div>
 
           <button id="credit-evaluate-btn" class="btn-lime" style="width:100%; margin-top:1.5rem; justify-content:center; padding:0.85rem;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <i data-lucide="check-circle-2" style="width:18px; height:18px;"></i>
             <span>Evaluate Credit Risk</span>
           </button>
         </div>
@@ -339,8 +410,8 @@
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
             <h3 style="font-size:1.15rem; font-weight:800;">Risk Intelligence Assessment</h3>
             <button id="credit-export-btn" class="tool-btn" title="Download report">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Export
+              <i data-lucide="download" style="width:14px; height:14px;"></i>
+              <span>Export</span>
             </button>
           </div>
 
@@ -436,7 +507,7 @@
           <!-- Mic -->
           <div id="emotion-panel-mic" style="display:none; padding:1.5rem 0;">
             <button id="emotion-record-btn" class="rec-button">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+              <i data-lucide="mic" style="width:20px; height:20px;"></i>
               <span>Start 3s Voice Recording</span>
             </button>
             <p style="font-size:0.8rem; color:var(--text-muted); text-align:center; margin-top:0.75rem;">
@@ -448,7 +519,7 @@
           <div id="emotion-panel-upload" style="display:none; padding:1rem 0;">
             <div id="emotion-upload-zone" class="upload-dropzone">
               <input type="file" id="emotion-file-input" accept="audio/*" style="display:none;" />
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--acid-lime); margin-bottom:0.5rem;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <i data-lucide="upload-cloud" style="width:36px; height:36px; color:var(--acid-lime); margin-bottom:0.5rem;"></i>
               <div style="font-weight:700; font-size:0.95rem; margin-bottom:0.25rem;">Drop audio file here or click to browse</div>
               <div style="font-size:0.8rem; color:var(--text-muted);">Supports .wav, .mp3, .ogg, .m4a</div>
             </div>
@@ -468,7 +539,7 @@
 
           <div class="audio-controls-row">
             <button id="emotion-play-btn" class="tool-btn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <i data-lucide="play" style="width:18px; height:18px;"></i>
               <span>Play Audio</span>
             </button>
             <span style="font-size:0.8rem; color:var(--text-muted);">
@@ -485,7 +556,9 @@
           </div>
 
           <div class="emotion-hero-card">
-            <div id="emotion-hero-emoji" class="hero-emoji-display">😄</div>
+            <div id="emotion-hero-icon" class="hero-icon-display">
+              <i data-lucide="smile" style="width:52px; height:52px; color:var(--acid-lime);"></i>
+            </div>
             <div id="emotion-hero-title" class="hero-emotion-name">HAPPY</div>
             <div id="emotion-hero-conf" class="hero-emotion-conf">62.4% Model Confidence</div>
           </div>
@@ -528,24 +601,24 @@
 
             <div class="canvas-toolbar">
               <button id="digit-predict-now-btn" class="tool-btn" style="background:var(--acid-lime); color:var(--acid-lime-text); border-color:var(--acid-lime);">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                Predict
+                <i data-lucide="play" style="width:14px; height:14px;"></i>
+                <span>Predict</span>
               </button>
               <button id="digit-clear-btn" class="tool-btn" title="Clear Canvas">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-                Clear
+                <i data-lucide="trash-2" style="width:14px; height:14px;"></i>
+                <span>Clear</span>
               </button>
               <button id="digit-undo-btn" class="tool-btn" title="Undo Stroke">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg>
-                Undo
+                <i data-lucide="undo-2" style="width:14px; height:14px;"></i>
+                <span>Undo</span>
               </button>
               <button id="digit-eraser-btn" class="tool-btn" title="Eraser">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
-                Eraser
+                <i data-lucide="eraser" style="width:14px; height:14px;"></i>
+                <span>Eraser</span>
               </button>
               <button id="digit-upload-btn" class="tool-btn" title="Upload Image">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                Upload
+                <i data-lucide="upload" style="width:14px; height:14px;"></i>
+                <span>Upload</span>
               </button>
               <input type="file" id="digit-file-input" accept="image/*" style="display:none;" />
             </div>
@@ -656,7 +729,12 @@
               <td>German Credit (1000)</td>
               <td><strong class="acid-text">74.50%</strong></td>
               <td>0.753</td>
-              <td><span class="pill-winner">★ Selected Best</span></td>
+              <td>
+                <span class="pill-winner">
+                  <i data-lucide="award" style="width:13px; height:13px; vertical-align:middle; margin-right:3px;"></i>
+                  Selected Best
+                </span>
+              </td>
             </tr>
             <tr data-category="credit">
               <td>Task 1: Credit Scoring</td>
@@ -680,7 +758,12 @@
               <td>RAVDESS (1440 audio)</td>
               <td><strong class="acid-text">60.42%</strong></td>
               <td>Angry (0.81 F1)</td>
-              <td><span class="pill-winner">★ Selected Best</span></td>
+              <td>
+                <span class="pill-winner">
+                  <i data-lucide="award" style="width:13px; height:13px; vertical-align:middle; margin-right:3px;"></i>
+                  Selected Best
+                </span>
+              </td>
             </tr>
             <tr data-category="emotion">
               <td>Task 2: Speech Emotion</td>
@@ -696,7 +779,12 @@
               <td>MNIST (70,000)</td>
               <td><strong class="acid-text">94.61%</strong></td>
               <td>0.95 Macro F1</td>
-              <td><span class="pill-winner">★ Selected Best</span></td>
+              <td>
+                <span class="pill-winner">
+                  <i data-lucide="award" style="width:13px; height:13px; vertical-align:middle; margin-right:3px;"></i>
+                  Selected Best
+                </span>
+              </td>
             </tr>
             <tr data-category="handwriting">
               <td>Task 3: Handwritten Digits</td>
@@ -786,7 +874,7 @@ python -m http.server 8080
             <div class="code-block">
 cd "D:\CodeAlpha-Tasks"
 git add .
-git commit -m "Update bespoke UI theme and accurate model predictions"
+git commit -m "Replace all emojis with Lucide icons"
 git push origin main
             </div>
           </div>
@@ -799,7 +887,9 @@ git push origin main
   <!-- Deploy Modal -->
   <div id="deploy-modal" class="modal-overlay">
     <div class="modal-card">
-      <button id="deploy-modal-close" class="modal-close-btn" aria-label="Close modal">✕</button>
+      <button id="deploy-modal-close" class="modal-close-btn" aria-label="Close modal">
+        <i data-lucide="x" style="width:18px; height:18px;"></i>
+      </button>
       <div style="font-size:0.8rem; text-transform:uppercase; color:var(--acid-lime); font-weight:800; margin-bottom:0.25rem;">Live Deployment</div>
       <h3 style="font-size:1.6rem; font-weight:800; margin-bottom:1rem;">How to Go Live on Netlify</h3>
       <p style="font-size:0.95rem; color:var(--text-secondary); line-height:1.6; margin-bottom:1.25rem;">
@@ -829,7 +919,7 @@ git push origin main</pre>
       <strong>CodeAlpha Machine Learning Internship</strong> • Built by <strong>Fareeha</strong>
     </p>
     <p style="font-size:0.8rem; margin-top:0.35rem; color:var(--text-muted);">
-      Midnight Black • Electric Cobalt Blue • Acid Lime Aesthetic • Pure Client-Side Inference.
+      Midnight Black • Electric Cobalt Blue • Acid Lime Aesthetic • Powered by Lucide Icons.
     </p>
   </footer>
 

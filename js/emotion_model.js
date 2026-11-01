@@ -1,7 +1,7 @@
 /**
  * Speech Emotion Recognition (Task 2)
  * Calibrated Web Audio Acoustic Analyzer & In-Browser Neural Network
- * Trained on RAVDESS (1440 speech samples, 8 emotion categories)
+ * Uses Lucide Icons (Zero Emojis)
  */
 
 class EmotionRecognitionEngine {
@@ -20,7 +20,7 @@ class EmotionRecognitionEngine {
     this.animFrameId = null;
     this.currentSampleKey = null;
 
-    // Palette: Acid Lime, Electric Cobalt Blue, and emotion tints
+    // Palette: Acid Lime, Electric Cobalt Blue, and emotion accents
     this.emotionColors = {
       angry: '#ff3344',
       calm: '#00d4ff',
@@ -32,15 +32,16 @@ class EmotionRecognitionEngine {
       surprised: '#f43f5e'
     };
 
-    this.emotionEmojis = {
-      angry: '😡',
-      calm: '😌',
-      disgust: '🤢',
-      fearful: '😨',
-      happy: '😄',
-      neutral: '😐',
-      sad: '😢',
-      surprised: '😲'
+    // Lucide Icon mappings (Zero Emojis)
+    this.emotionIcons = {
+      angry: 'flame',
+      calm: 'wind',
+      disgust: 'shield-alert',
+      fearful: 'alert-triangle',
+      happy: 'smile',
+      neutral: 'meh',
+      sad: 'frown',
+      surprised: 'sparkles'
     };
 
     this.init();
@@ -61,7 +62,6 @@ class EmotionRecognitionEngine {
       this.bindEvents();
       this.initCanvas();
 
-      // Load Happy preset by default
       if (this.samplesCatalog?.happy) {
         this.selectSample('happy', false);
       }
@@ -97,15 +97,17 @@ class EmotionRecognitionEngine {
       const btn = document.createElement('button');
       btn.className = 'sample-chip';
       btn.dataset.sampleKey = key;
-      const emoji = this.emotionEmojis[key] || '🎵';
+      const iconName = this.emotionIcons[key] || 'activity';
       btn.innerHTML = `
-        <span class="sample-emoji">${emoji}</span>
+        <span class="sample-icon-wrapper"><i data-lucide="${iconName}"></i></span>
         <span class="sample-name">${item.name}</span>
         <span class="sample-badge">${Math.round(item.confidence)}%</span>
       `;
       btn.addEventListener('click', () => this.selectSample(key, true));
       container.appendChild(btn);
     });
+
+    if (window.lucide) window.lucide.createIcons();
   }
 
   bindEvents() {
@@ -237,8 +239,9 @@ class EmotionRecognitionEngine {
     const playBtn = document.getElementById('emotion-play-btn');
     if (playBtn) {
       playBtn.innerHTML = isPlaying
-        ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> Pause Audio`
-        : `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Play Audio`;
+        ? `<i data-lucide="pause" style="width:18px; height:18px;"></i> <span>Pause Audio</span>`
+        : `<i data-lucide="play" style="width:18px; height:18px;"></i> <span>Play Audio</span>`;
+      if (window.lucide) window.lucide.createIcons();
     }
   }
 
@@ -327,7 +330,8 @@ class EmotionRecognitionEngine {
     const btn = document.getElementById('emotion-record-btn');
     if (btn) {
       btn.classList.remove('recording');
-      btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg> Start 3s Voice Recording`;
+      btn.innerHTML = `<i data-lucide="mic" style="width:18px; height:18px;"></i> <span>Start 3s Voice Recording</span>`;
+      if (window.lucide) window.lucide.createIcons();
     }
   }
 
@@ -370,15 +374,9 @@ class EmotionRecognitionEngine {
     reader.readAsArrayBuffer(file);
   }
 
-  /**
-   * Accurate Web Audio Acoustic Signal Processing
-   * Extracts True RMS Volume, Zero-Crossing Rate, Pitch Variance,
-   * and maps against RAVDESS empirical emotion distributions.
-   */
   analyzeRealAudio(buffer) {
     const channelData = buffer.getChannelData(0);
     const n = channelData.length;
-    const sampleRate = buffer.sampleRate;
 
     let sumSquares = 0;
     let zeroCrossings = 0;
@@ -398,12 +396,6 @@ class EmotionRecognitionEngine {
     const rms = Math.sqrt(sumSquares / n);
     const zcr = zeroCrossings / n;
 
-    // Detect primary emotion based on acoustic features
-    // Angry: High RMS (>0.035), high peak amp, intense delivery
-    // Happy: Moderate-high RMS (0.015-0.035), active ZCR, bright
-    // Calm / Sad: Low RMS (<0.010), subdued
-    // Neutral: Medium RMS, flat contour
-    // Surprised: High transient spike
     let primaryEmotion = 'neutral';
     const probMap = {
       angry: 5.0,
@@ -465,17 +457,19 @@ class EmotionRecognitionEngine {
 
   displayPrediction(emotion, confidence, probMap) {
     const emoColor = this.emotionColors[emotion] || '#ccff00';
-    const emoEmoji = this.emotionEmojis[emotion] || '🎵';
+    const iconName = this.emotionIcons[emotion] || 'activity';
 
     const badge = document.getElementById('emotion-result-badge');
-    const heroEmoji = document.getElementById('emotion-hero-emoji');
+    const heroIconContainer = document.getElementById('emotion-hero-icon');
     const heroTitle = document.getElementById('emotion-hero-title');
     const heroConf = document.getElementById('emotion-hero-conf');
     const auraCard = document.getElementById('emotion-aura-card');
 
-    if (heroEmoji) heroEmoji.textContent = emoEmoji;
+    if (heroIconContainer) {
+      heroIconContainer.innerHTML = `<i data-lucide="${iconName}" style="width: 52px; height: 52px; color: ${emoColor};"></i>`;
+    }
     if (heroTitle) heroTitle.textContent = emotion.toUpperCase();
-    if (heroConf) heroConf.textContent = `${confidence.toFixed(1)}% Confidence`;
+    if (heroConf) heroConf.textContent = `${confidence.toFixed(1)}% Model Confidence`;
 
     if (badge) {
       badge.textContent = `${emotion.toUpperCase()} VERIFIED`;
@@ -499,10 +493,13 @@ class EmotionRecognitionEngine {
         row.className = 'prob-row';
         const isTop = emoName === emotion;
         const color = isTop ? '#ccff00' : (this.emotionColors[emoName] || '#2563eb');
+        const rowIcon = this.emotionIcons[emoName] || 'activity';
         row.innerHTML = `
           <div class="prob-label">
-            <span class="prob-emoji">${this.emotionEmojis[emoName] || ''}</span>
-            <span class="prob-name ${isTop ? 'highlight acid-text' : ''}">${emoName}</span>
+            <span class="prob-icon-label">
+              <i data-lucide="${rowIcon}" style="width:14px; height:14px; vertical-align:middle; margin-right:4px;"></i>
+              <span class="prob-name ${isTop ? 'highlight acid-text' : ''}">${emoName}</span>
+            </span>
             <span class="prob-val ${isTop ? 'acid-text' : ''}">${pct.toFixed(1)}%</span>
           </div>
           <div class="prob-track">
@@ -526,9 +523,10 @@ class EmotionRecognitionEngine {
 
     const descElem = document.getElementById('emotion-acoustic-desc');
     if (descElem) descElem.textContent = summaries[emotion] || 'Detected acoustic signature processed through model.';
+
+    if (window.lucide) window.lucide.createIcons();
   }
 
-  // --- Visualizer ---
   initCanvas() {
     this.canvas = document.getElementById('emotion-visualizer-canvas');
     if (!this.canvas) return;
@@ -543,7 +541,7 @@ class EmotionRecognitionEngine {
     const h = this.canvas.height = 120;
 
     ctx.clearRect(0, 0, w, h);
-    ctx.strokeStyle = 'rgba(204, 255, 0, 0.25)'; // Acid lime idle line
+    ctx.strokeStyle = 'rgba(204, 255, 0, 0.25)';
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(0, h / 2);
@@ -614,7 +612,7 @@ class EmotionRecognitionEngine {
       }
       ctx.lineTo(w, h / 2);
       ctx.stroke();
-      ctx.shadowBlur = 0; // reset
+      ctx.shadowBlur = 0;
     };
 
     render();

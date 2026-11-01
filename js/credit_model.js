@@ -1,7 +1,7 @@
 /**
  * Credit Scoring Model (Task 1)
  * High-Accuracy 100-Tree Random Forest In-Browser Evaluator
- * Calibrated against German Credit Dataset
+ * Uses Lucide Icons (Zero Emojis)
  */
 
 class CreditScoringEngine {
@@ -35,7 +35,6 @@ class CreditScoringEngine {
     inputIds.forEach(id => {
       const el = document.getElementById(id);
       if (el) {
-        // Listen to BOTH input (sliders) and change (dropdowns)
         ['input', 'change'].forEach(evt => {
           el.addEventListener(evt, () => {
             this.syncSliders(id);
@@ -45,14 +44,12 @@ class CreditScoringEngine {
       }
     });
 
-    // Evaluate button
     document.getElementById('credit-evaluate-btn')?.addEventListener('click', () => {
       if (window.app?.playSound) window.app.playSound('success');
       this.evaluateCurrentInputs();
       window.app?.toast('Credit evaluation calculated!', 'success');
     });
 
-    // Presets
     document.querySelectorAll('[data-persona]').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const persona = e.currentTarget.getAttribute('data-persona');
@@ -60,7 +57,6 @@ class CreditScoringEngine {
       });
     });
 
-    // Export
     document.getElementById('credit-export-btn')?.addEventListener('click', () => {
       this.exportReport();
     });
@@ -148,7 +144,7 @@ class CreditScoringEngine {
         node = tree.children_right[node];
       }
     }
-    const val = tree.value[node]; // [countBad, countGood]
+    const val = tree.value[node];
     const total = val[0] + val[1];
     if (total === 0) return [0.3, 0.7];
     return [val[0] / total, val[1] / total];
@@ -164,7 +160,6 @@ class CreditScoringEngine {
     const checkingCode = enc['Checking account'][featuresRaw.checking] ?? 2;
     const purposeCode = enc.Purpose[featuresRaw.purpose] ?? 1;
 
-    // Features order: ['Age', 'Sex', 'Job', 'Housing', 'Saving accounts', 'Checking account', 'Credit amount', 'Duration', 'Purpose']
     const x = [
       featuresRaw.age,
       sexCode,
@@ -177,7 +172,6 @@ class CreditScoringEngine {
       purposeCode
     ];
 
-    // Standardize: Age(0), Credit amount(6), Duration(7)
     const mean = this.modelData.scaler_mean;
     const scale = this.modelData.scaler_scale;
 
@@ -207,7 +201,6 @@ class CreditScoringEngine {
     const inputs = this.getInputs();
     const result = this.predict(inputs);
 
-    // Map probability to FICO range: 300 to 850
     const score = Math.round(300 + (result.goodProb * 550));
     const goodPct = (result.goodProb * 100).toFixed(1);
     const badPct = (result.badProb * 100).toFixed(1);
@@ -241,7 +234,6 @@ class CreditScoringEngine {
 
     this.updateGauge(score);
 
-    // Loan calculations
     const apr = score >= 680 ? 0.059 : score >= 570 ? 0.105 : 0.169;
     const monthlyRate = apr / 12;
     const n = inputs.duration;
@@ -276,11 +268,11 @@ class CreditScoringEngine {
 
     gaugePath.style.strokeDashoffset = dashOffset;
     if (score >= 680) {
-      gaugePath.style.stroke = 'var(--accent-lime)'; // Acid Lime for excellent score
+      gaugePath.style.stroke = 'var(--acid-lime)';
     } else if (score >= 570) {
-      gaugePath.style.stroke = 'var(--accent-blue)'; // Electric Cobalt Blue
+      gaugePath.style.stroke = 'var(--electric-cobalt-light)';
     } else {
-      gaugePath.style.stroke = '#ff3344'; // Red alert
+      gaugePath.style.stroke = '#ff3344';
     }
   }
 
@@ -319,8 +311,8 @@ class CreditScoringEngine {
     factors.forEach(f => {
       const li = document.createElement('li');
       li.className = `factor-item ${f.risk}`;
-      const icon = f.risk === 'positive' ? '✓' : f.risk === 'negative' ? '⚠' : 'ℹ';
-      li.innerHTML = `<span class="factor-icon">${icon}</span> <span>${f.text}</span>`;
+      const iconName = f.risk === 'positive' ? 'check-circle-2' : f.risk === 'negative' ? 'alert-triangle' : 'info';
+      li.innerHTML = `<span class="factor-icon"><i data-lucide="${iconName}" style="width:16px; height:16px;"></i></span> <span>${f.text}</span>`;
       list.appendChild(li);
     });
 
@@ -333,6 +325,8 @@ class CreditScoringEngine {
         adviceElem.textContent = 'High probability of repayment difficulties. Recommended steps: Lower loan amount by 25-40%, extend down payment, and provide verified checking reserves.';
       }
     }
+
+    if (window.lucide) window.lucide.createIcons();
   }
 
   exportReport() {
@@ -340,7 +334,6 @@ class CreditScoringEngine {
     const inputs = this.getInputs();
     const result = this.predict(inputs);
     const score = Math.round(300 + (result.goodProb * 550));
-    const isGood = score >= 570;
 
     const report = `===================================================
   CODEALPHA MACHINE LEARNING INTERNSHIP
