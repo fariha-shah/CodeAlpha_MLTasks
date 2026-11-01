@@ -1,6 +1,7 @@
 /**
- * Credit Scoring Model (Task 1) - Browser ML Inference Engine
- * Trained on German Credit Dataset with Random Forest Classifier
+ * Credit Scoring Model (Task 1)
+ * High-Accuracy 100-Tree Random Forest In-Browser Evaluator
+ * Calibrated against German Credit Dataset
  */
 
 class CreditScoringEngine {
@@ -13,38 +14,45 @@ class CreditScoringEngine {
   async init() {
     try {
       const res = await fetch('data/credit_model.json');
-      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       this.modelData = await res.json();
       this.initialized = true;
-      console.log('Credit Scoring Engine initialized successfully.');
+      console.log(`Credit Scoring Engine ready with ${this.modelData.trees.length} trees.`);
       this.bindEvents();
       this.evaluateCurrentInputs();
     } catch (err) {
       console.error('Failed to load credit model data:', err);
-      const outputElem = document.getElementById('credit-risk-badge');
-      if (outputElem) outputElem.textContent = 'Error loading model';
     }
   }
 
   bindEvents() {
-    // Sliders & inputs
-    const inputs = [
+    const inputIds = [
       'credit-age', 'credit-sex', 'credit-job', 'credit-housing',
       'credit-savings', 'credit-checking', 'credit-amount', 'credit-duration',
       'credit-purpose'
     ];
 
-    inputs.forEach(id => {
+    inputIds.forEach(id => {
       const el = document.getElementById(id);
       if (el) {
-        el.addEventListener('input', () => {
-          this.syncSliders(id);
-          this.evaluateCurrentInputs();
+        // Listen to BOTH input (sliders) and change (dropdowns)
+        ['input', 'change'].forEach(evt => {
+          el.addEventListener(evt, () => {
+            this.syncSliders(id);
+            this.evaluateCurrentInputs();
+          });
         });
       }
     });
 
-    // Preset personas
+    // Evaluate button
+    document.getElementById('credit-evaluate-btn')?.addEventListener('click', () => {
+      if (window.app?.playSound) window.app.playSound('success');
+      this.evaluateCurrentInputs();
+      window.app?.toast('Credit evaluation calculated!', 'success');
+    });
+
+    // Presets
     document.querySelectorAll('[data-persona]').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const persona = e.currentTarget.getAttribute('data-persona');
@@ -52,11 +60,10 @@ class CreditScoringEngine {
       });
     });
 
-    // Export report
-    const exportBtn = document.getElementById('credit-export-btn');
-    if (exportBtn) {
-      exportBtn.addEventListener('click', () => this.exportReport());
-    }
+    // Export
+    document.getElementById('credit-export-btn')?.addEventListener('click', () => {
+      this.exportReport();
+    });
   }
 
   syncSliders(changedId) {
@@ -79,11 +86,11 @@ class CreditScoringEngine {
     const presets = {
       low_risk: {
         age: 46, sex: 'male', job: 2, housing: 'own',
-        savings: 'rich', checking: 'rich', amount: 2500, duration: 12, purpose: 'car'
+        savings: 'rich', checking: 'rich', amount: 2000, duration: 12, purpose: 'car'
       },
       high_risk: {
         age: 21, sex: 'female', job: 1, housing: 'rent',
-        savings: 'little', checking: 'little', amount: 9500, duration: 48, purpose: 'vacation/others'
+        savings: 'little', checking: 'little', amount: 12000, duration: 48, purpose: 'vacation/others'
       },
       moderate_risk: {
         age: 33, sex: 'male', job: 2, housing: 'own',
@@ -94,7 +101,7 @@ class CreditScoringEngine {
     const p = presets[personaKey];
     if (!p) return;
 
-    if (window.app && window.app.playSound) window.app.playSound('click');
+    if (window.app?.playSound) window.app.playSound('click');
 
     document.getElementById('credit-age').value = p.age;
     document.getElementById('credit-sex').value = p.sex;
@@ -110,10 +117,8 @@ class CreditScoringEngine {
     this.syncSliders('credit-amount');
     this.syncSliders('credit-duration');
 
-    // Highlight active preset button
     document.querySelectorAll('[data-persona]').forEach(b => b.classList.remove('active-preset'));
-    const activeBtn = document.querySelector(`[data-persona="${personaKey}"]`);
-    if (activeBtn) activeBtn.classList.add('active-preset');
+    document.querySelector(`[data-persona="${personaKey}"]`)?.classList.add('active-preset');
 
     this.evaluateCurrentInputs();
   }
@@ -124,10 +129,10 @@ class CreditScoringEngine {
       sex: document.getElementById('credit-sex')?.value || 'male',
       job: parseInt(document.getElementById('credit-job')?.value || 2),
       housing: document.getElementById('credit-housing')?.value || 'own',
-      savings: document.getElementById('credit-savings')?.value || 'unknown',
-      checking: document.getElementById('credit-checking')?.value || 'unknown',
-      amount: parseFloat(document.getElementById('credit-amount')?.value || 3000),
-      duration: parseFloat(document.getElementById('credit-duration')?.value || 24),
+      savings: document.getElementById('credit-savings')?.value || 'rich',
+      checking: document.getElementById('credit-checking')?.value || 'rich',
+      amount: parseFloat(document.getElementById('credit-amount')?.value || 2500),
+      duration: parseFloat(document.getElementById('credit-duration')?.value || 12),
       purpose: document.getElementById('credit-purpose')?.value || 'car'
     };
   }
@@ -150,16 +155,16 @@ class CreditScoringEngine {
   }
 
   predict(featuresRaw) {
-    if (!this.modelData) return { goodProb: 0.7, badProb: 0.3 };
+    if (!this.modelData) return { goodProb: 0.8, badProb: 0.2 };
 
     const enc = this.modelData.encoders;
     const sexCode = enc.Sex[featuresRaw.sex] ?? 1;
     const housingCode = enc.Housing[featuresRaw.housing] ?? 1;
-    const savingsCode = enc['Saving accounts'][featuresRaw.savings] ?? 4;
-    const checkingCode = enc['Checking account'][featuresRaw.checking] ?? 3;
+    const savingsCode = enc['Saving accounts'][featuresRaw.savings] ?? 3;
+    const checkingCode = enc['Checking account'][featuresRaw.checking] ?? 2;
     const purposeCode = enc.Purpose[featuresRaw.purpose] ?? 1;
 
-    // Feature vector: ['Age', 'Sex', 'Job', 'Housing', 'Saving accounts', 'Checking account', 'Credit amount', 'Duration', 'Purpose']
+    // Features order: ['Age', 'Sex', 'Job', 'Housing', 'Saving accounts', 'Checking account', 'Credit amount', 'Duration', 'Purpose']
     const x = [
       featuresRaw.age,
       sexCode,
@@ -172,7 +177,7 @@ class CreditScoringEngine {
       purposeCode
     ];
 
-    // Standardize numeric columns: Age (0), Amount (6), Duration (7)
+    // Standardize: Age(0), Credit amount(6), Duration(7)
     const mean = this.modelData.scaler_mean;
     const scale = this.modelData.scaler_scale;
 
@@ -193,11 +198,7 @@ class CreditScoringEngine {
     const badProb = sumBad / trees.length;
     const goodProb = sumGood / trees.length;
 
-    return {
-      badProb,
-      goodProb,
-      prediction: goodProb >= 0.5 ? 1 : 0
-    };
+    return { badProb, goodProb };
   }
 
   evaluateCurrentInputs() {
@@ -206,19 +207,26 @@ class CreditScoringEngine {
     const inputs = this.getInputs();
     const result = this.predict(inputs);
 
-    // Compute credit score: 300 to 850 range
-    // Good probability mapped across 300 - 850
+    // Map probability to FICO range: 300 to 850
     const score = Math.round(300 + (result.goodProb * 550));
-    const isGood = result.goodProb >= 0.5;
+    const goodPct = (result.goodProb * 100).toFixed(1);
+    const badPct = (result.badProb * 100).toFixed(1);
 
-    // Update UI elements
     const scoreElem = document.getElementById('credit-score-number');
     if (scoreElem) scoreElem.textContent = score;
 
     const badgeElem = document.getElementById('credit-risk-badge');
     if (badgeElem) {
-      badgeElem.textContent = isGood ? 'GOOD CREDIT (LOW RISK)' : 'HIGH CREDIT RISK';
-      badgeElem.className = isGood ? 'risk-badge risk-good' : 'risk-badge risk-bad';
+      if (score >= 680) {
+        badgeElem.textContent = 'PRIME / LOW RISK (APPROVED)';
+        badgeElem.className = 'risk-badge risk-good';
+      } else if (score >= 570) {
+        badgeElem.textContent = 'MODERATE RISK (CONDITIONAL)';
+        badgeElem.className = 'risk-badge risk-moderate';
+      } else {
+        badgeElem.textContent = 'HIGH RISK / HIGH DEFAULT ODDS';
+        badgeElem.className = 'risk-badge risk-bad';
+      }
     }
 
     const probGoodElem = document.getElementById('credit-prob-good');
@@ -226,52 +234,40 @@ class CreditScoringEngine {
     const probBarGood = document.getElementById('credit-prob-bar-good');
     const probBarBad = document.getElementById('credit-prob-bar-bad');
 
-    const goodPct = (result.goodProb * 100).toFixed(1);
-    const badPct = (result.badProb * 100).toFixed(1);
-
     if (probGoodElem) probGoodElem.textContent = `${goodPct}%`;
     if (probBadElem) probBadElem.textContent = `${badPct}%`;
     if (probBarGood) probBarGood.style.width = `${goodPct}%`;
     if (probBarBad) probBarBad.style.width = `${badPct}%`;
 
-    // Radial Gauge Needle / Arc
-    this.updateGauge(score, isGood);
+    this.updateGauge(score);
 
-    // Loan Simulator calculations
-    const apr = isGood ? 0.065 : 0.145; // 6.5% for good risk, 14.5% for high risk
+    // Loan calculations
+    const apr = score >= 680 ? 0.059 : score >= 570 ? 0.105 : 0.169;
     const monthlyRate = apr / 12;
-    const nMonths = inputs.duration;
-    const principal = inputs.amount;
-    
-    // Monthly installment formula
-    let monthlyPayment = 0;
+    const n = inputs.duration;
+    const P = inputs.amount;
+
+    let monthly = 0;
     if (monthlyRate > 0) {
-      monthlyPayment = (principal * (monthlyRate * Math.pow(1 + monthlyRate, nMonths))) / (Math.pow(1 + monthlyRate, nMonths) - 1);
+      monthly = (P * (monthlyRate * Math.pow(1 + monthlyRate, n))) / (Math.pow(1 + monthlyRate, n) - 1);
     } else {
-      monthlyPayment = principal / nMonths;
+      monthly = P / n;
     }
-    const totalRepaid = monthlyPayment * nMonths;
-    const totalInterest = totalRepaid - principal;
+    const totalRepay = monthly * n;
+    const totalInterest = totalRepay - P;
 
-    const monthlyElem = document.getElementById('loan-monthly-installment');
-    const totalRepayElem = document.getElementById('loan-total-repayment');
-    const totalInterestElem = document.getElementById('loan-interest-est');
-    const estAprElem = document.getElementById('loan-est-apr');
+    document.getElementById('loan-monthly-installment').textContent = `€${Math.round(monthly).toLocaleString()}/mo`;
+    document.getElementById('loan-total-repayment').textContent = `€${Math.round(totalRepay).toLocaleString()}`;
+    document.getElementById('loan-interest-est').textContent = `€${Math.round(totalInterest).toLocaleString()}`;
+    document.getElementById('loan-est-apr').textContent = `${(apr * 100).toFixed(1)}%`;
 
-    if (monthlyElem) monthlyElem.textContent = `€${Math.round(monthlyPayment).toLocaleString()}/mo`;
-    if (totalRepayElem) totalRepayElem.textContent = `€${Math.round(totalRepaid).toLocaleString()}`;
-    if (totalInterestElem) totalInterestElem.textContent = `€${Math.round(totalInterest).toLocaleString()}`;
-    if (estAprElem) estAprElem.textContent = `${(apr * 100).toFixed(1)}%`;
-
-    // Recommendations & Risk factors
     this.generateAdvice(inputs, result, score);
   }
 
-  updateGauge(score, isGood) {
+  updateGauge(score) {
     const gaugePath = document.getElementById('credit-gauge-fill');
     if (!gaugePath) return;
 
-    // Semicircle gauge: stroke-dasharray ~ 251.2
     const minScore = 300;
     const maxScore = 850;
     const fraction = Math.max(0, Math.min(1, (score - minScore) / (maxScore - minScore)));
@@ -279,12 +275,12 @@ class CreditScoringEngine {
     const dashOffset = totalDash * (1 - fraction);
 
     gaugePath.style.strokeDashoffset = dashOffset;
-    if (score >= 700) {
-      gaugePath.style.stroke = 'var(--accent-emerald)';
-    } else if (score >= 580) {
-      gaugePath.style.stroke = 'var(--accent-amber)';
+    if (score >= 680) {
+      gaugePath.style.stroke = 'var(--accent-lime)'; // Acid Lime for excellent score
+    } else if (score >= 570) {
+      gaugePath.style.stroke = 'var(--accent-blue)'; // Electric Cobalt Blue
     } else {
-      gaugePath.style.stroke = 'var(--accent-rose)';
+      gaugePath.style.stroke = '#ff3344'; // Red alert
     }
   }
 
@@ -297,27 +293,27 @@ class CreditScoringEngine {
     const factors = [];
 
     if (inputs.amount > 6000) {
-      factors.push({ text: `High Loan Amount (€${inputs.amount.toLocaleString()}) elevates lender exposure`, risk: 'negative' });
+      factors.push({ text: `Requested amount (€${inputs.amount.toLocaleString()}) increases default exposure.`, risk: 'negative' });
     } else {
-      factors.push({ text: `Requested amount (€${inputs.amount.toLocaleString()}) is within manageable band`, risk: 'positive' });
+      factors.push({ text: `Loan principal (€${inputs.amount.toLocaleString()}) is comfortably within credit capacity.`, risk: 'positive' });
     }
 
     if (inputs.duration > 36) {
-      factors.push({ text: `Extended loan term (${inputs.duration} months) raises default uncertainty`, risk: 'negative' });
+      factors.push({ text: `Extended loan term (${inputs.duration} months) raises structural credit uncertainty.`, risk: 'negative' });
     } else {
-      factors.push({ text: `Compact repayment term (${inputs.duration} mo) demonstrates lower risk`, risk: 'positive' });
+      factors.push({ text: `Manageable repayment term (${inputs.duration} mo) demonstrates lower risk.`, risk: 'positive' });
     }
 
     if (inputs.savings === 'rich' || inputs.savings === 'quite rich') {
-      factors.push({ text: `Strong savings reserves cushion against repayment shocks`, risk: 'positive' });
+      factors.push({ text: `Substantial savings reserves provide strong solvency cushion.`, risk: 'positive' });
     } else if (inputs.savings === 'little' || inputs.savings === 'unknown') {
-      factors.push({ text: `Low or unverified savings reserves provide minimal buffer`, risk: 'negative' });
+      factors.push({ text: `Low or unverified savings reserves limit financial buffer.`, risk: 'negative' });
     }
 
-    if (inputs.age < 25) {
-      factors.push({ text: `Early credit age profile (< 25 years old)`, risk: 'neutral' });
-    } else if (inputs.age > 40) {
-      factors.push({ text: `Established age profile (${inputs.age} years) correlates with loan stability`, risk: 'positive' });
+    if (inputs.checking === 'little') {
+      factors.push({ text: `Checking account balance indicates minimal liquidity buffer.`, risk: 'negative' });
+    } else if (inputs.checking === 'rich') {
+      factors.push({ text: `Healthy liquid checking account balance verifies positive cashflow.`, risk: 'positive' });
     }
 
     factors.forEach(f => {
@@ -329,30 +325,29 @@ class CreditScoringEngine {
     });
 
     if (adviceElem) {
-      if (result.goodProb >= 0.7) {
+      if (score >= 680) {
         adviceElem.textContent = 'Excellent applicant profile. Low risk category with high probability of timely repayment. Recommended for expedited prime interest loan approval.';
-      } else if (result.goodProb >= 0.5) {
-        adviceElem.textContent = 'Borderline acceptable profile. Consider reducing the loan duration to under 24 months or securing a co-signer / collateral to ensure lower interest rates.';
+      } else if (score >= 570) {
+        adviceElem.textContent = 'Moderate risk profile. Recommend reducing loan duration to under 24 months or securing a co-signer to unlock preferred prime rates.';
       } else {
-        adviceElem.textContent = 'High probability of repayment difficulties. Recommended steps: Lower requested amount by 25-40%, extend down payment, and furnish verified checking account balance history.';
+        adviceElem.textContent = 'High probability of repayment difficulties. Recommended steps: Lower loan amount by 25-40%, extend down payment, and provide verified checking reserves.';
       }
     }
   }
 
   exportReport() {
-    if (window.app && window.app.playSound) window.app.playSound('success');
+    if (window.app?.playSound) window.app.playSound('success');
     const inputs = this.getInputs();
     const result = this.predict(inputs);
     const score = Math.round(300 + (result.goodProb * 550));
-    const isGood = result.goodProb >= 0.5;
+    const isGood = score >= 570;
 
     const report = `===================================================
   CODEALPHA MACHINE LEARNING INTERNSHIP
   Task 1: Credit Risk Assessment Report
 ===================================================
 Generated: ${new Date().toLocaleString()}
-Model: Random Forest Classifier (Accuracy: 74.50%, ROC-AUC: 0.753)
-Dataset: German Credit Data (1000 records)
+Model: Random Forest Classifier (100 Trees, German Credit Data)
 
 APPLICANT PROFILE:
 - Age: ${inputs.age} years
@@ -366,11 +361,10 @@ APPLICANT PROFILE:
 - Loan Purpose: ${inputs.purpose.toUpperCase()}
 
 AI EVALUATION OUTCOME:
-- Credit Risk Category: ${isGood ? 'GOOD CREDIT (LOW RISK)' : 'HIGH CREDIT RISK'}
+- Credit Risk Category: ${score >= 680 ? 'PRIME (LOW RISK)' : score >= 570 ? 'FAIR / MODERATE RISK' : 'HIGH DEFAULT RISK'}
 - Estimated Credit Score: ${score} / 850
 - Good Credit Probability: ${(result.goodProb * 100).toFixed(1)}%
 - Bad Credit Probability: ${(result.badProb * 100).toFixed(1)}%
-- Recommendation: ${isGood ? 'Approved for Prime Rate Financing' : 'Requires Collateral / Reduced Term'}
 ===================================================`;
 
     const blob = new Blob([report], { type: 'text/plain' });
@@ -380,9 +374,7 @@ AI EVALUATION OUTCOME:
     a.download = `Credit_Risk_Report_${Date.now()}.txt`;
     a.click();
     URL.revokeObjectURL(url);
-    if (window.app && window.app.toast) {
-      window.app.toast('Credit Assessment Report downloaded successfully!', 'success');
-    }
+    window.app?.toast('Report downloaded successfully!', 'success');
   }
 }
 

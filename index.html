@@ -4,74 +4,74 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CodeAlpha ML Studio — Interactive Machine Learning Portfolio</title>
-  <meta name="description" content="Unified Interactive AI/ML Web Application featuring German Credit Risk Scoring, Speech Emotion Recognition, and MNIST Handwritten Digit Recognition." />
+  <meta name="description" content="Unified Interactive AI/ML Web Application by Fareeha featuring German Credit Risk Scoring, Speech Emotion Recognition, and MNIST Handwritten Digit Recognition in Midnight Black, Electric Cobalt Blue, and Acid Lime." />
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Outfit, Inter, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- App Stylesheet -->
+  <!-- Master Stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <!-- Ambient Animated Glow Background -->
+  <!-- Ambient Glow Background -->
   <div class="ambient-glow"></div>
 
-  <!-- Navigation Bar -->
+  <!-- Top Navigation Bar -->
   <header class="navbar">
     <div class="nav-container">
       <a href="#home" class="brand-group" data-target-section="home">
         <div class="brand-logo-icon">α</div>
         <div class="brand-text-col">
-          <span class="brand-title">CodeAlpha ML Studio</span>
-          <span class="brand-subtitle">Fareeha • ML Intern</span>
+          <span class="brand-title">CodeAlpha <span class="lime-highlight">ML Studio</span></span>
+          <span class="brand-subtitle">Fareeha • Machine Learning Intern</span>
         </div>
       </a>
 
-      <!-- Desktop Nav Links -->
+      <!-- Desktop Navigation Links -->
       <nav>
         <ul class="nav-links">
-          <li><a href="#home" class="nav-link active" data-target-section="home">🌟 Overview</a></li>
-          <li><a href="#credit" class="nav-link" data-target-section="credit">💳 Credit Scoring</a></li>
+          <li><a href="#home" class="nav-link active" data-target-section="home">⚡ Hub</a></li>
+          <li><a href="#credit" class="nav-link" data-target-section="credit">💳 Credit Risk</a></li>
           <li><a href="#emotion" class="nav-link" data-target-section="emotion">🎙️ Speech Emotion</a></li>
-          <li><a href="#handwriting" class="nav-link" data-target-section="handwriting">✍️ Digit Canvas</a></li>
+          <li><a href="#handwriting" class="nav-link" data-target-section="handwriting">✍️ MNIST Canvas</a></li>
           <li><a href="#benchmarks" class="nav-link" data-target-section="benchmarks">📊 Benchmarks</a></li>
           <li><a href="#docs" class="nav-link" data-target-section="docs">📖 Guide</a></li>
         </ul>
       </nav>
 
-      <!-- Nav Action Controls -->
+      <!-- Action Buttons -->
       <div class="nav-actions">
-        <button id="theme-toggle-btn" class="icon-btn" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
+        <button id="theme-toggle-btn" class="icon-btn" title="Toggle Theme" aria-label="Toggle Theme">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </button>
-        <button id="sound-toggle-btn" class="icon-btn" title="Toggle UI Sound Effects" aria-label="Toggle Sound">
+        <button id="sound-toggle-btn" class="icon-btn" title="Toggle Sound Feedback" aria-label="Toggle Sound">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
         </button>
-        <button id="deploy-guide-btn" class="btn-primary-sm">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <button id="deploy-guide-btn" class="btn-lime">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           Deploy Guide
         </button>
-        <a href="https://github.com/fariha-shah/CodeAlpha_Tasks" target="_blank" rel="noopener noreferrer" class="icon-btn" title="View GitHub Repository">
+        <a href="https://github.com/fariha-shah/CodeAlpha_Tasks" target="_blank" rel="noopener noreferrer" class="icon-btn" title="GitHub Repository">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         </a>
-        <button id="mobile-menu-btn" class="icon-btn mobile-menu-btn" aria-label="Open Navigation">
+        <button id="mobile-menu-btn" class="icon-btn mobile-menu-btn" aria-label="Open Mobile Menu">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Drawer Menu -->
+  <!-- Mobile Menu Drawer -->
   <aside id="mobile-drawer" class="mobile-drawer">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
-      <span style="font-weight:700; font-size:1.1rem;">Menu</span>
+      <span style="font-weight:800; font-size:1.15rem; color:var(--acid-lime);">Navigation</span>
       <button id="mobile-drawer-close" class="icon-btn" aria-label="Close Menu">✕</button>
     </div>
     <ul style="list-style:none; display:flex; flex-direction:column; gap:0.5rem;">
-      <li><a href="#home" class="nav-link active" data-target-section="home">🌟 Overview</a></li>
+      <li><a href="#home" class="nav-link active" data-target-section="home">⚡ Hub Overview</a></li>
       <li><a href="#credit" class="nav-link" data-target-section="credit">💳 Credit Scoring</a></li>
       <li><a href="#emotion" class="nav-link" data-target-section="emotion">🎙️ Speech Emotion</a></li>
       <li><a href="#handwriting" class="nav-link" data-target-section="handwriting">✍️ Digit Canvas</a></li>
@@ -80,7 +80,7 @@
     </ul>
   </aside>
 
-  <!-- Main Content App Container -->
+  <!-- Main Workspace -->
   <main class="app-main">
 
     <!-- ====================================================================
@@ -90,49 +90,49 @@
       <div class="hero-banner">
         <div class="hero-content">
           <div class="hero-badge">
-            <span style="width:8px; height:8px; background:var(--accent-emerald); border-radius:50%; display:inline-block;"></span>
-            CodeAlpha Machine Learning Internship Portfolio
+            <span style="width:8px; height:8px; background:var(--acid-lime); border-radius:50%; box-shadow:0 0 8px var(--acid-lime-glow); display:inline-block;"></span>
+            CodeAlpha Machine Learning Internship Showcase
           </div>
           <h1 class="hero-title">
-            Interactive AI &amp; Machine Learning <span class="gradient-text">Studio Suite</span>
+            Human-Crafted AI &amp; <span class="cobalt-word">Machine Learning</span> <span class="lime-word">Studio Suite</span>
           </h1>
           <p class="hero-subtitle">
-            A unified, client-side web application integrating three production machine learning tasks into one interactive experience. Featuring pure browser-based neural network and random forest inference, real-time Web Audio API frequency analysis, and responsive drawing canvas computer vision.
+            An artisan portfolio uniting three real-world machine learning models into one high-contrast, lightning-fast web experience. Built with native client-side vectorized neural network inference, pure Web Audio acoustic signal processing, and responsive canvas computer vision.
           </p>
           <div class="hero-actions">
-            <a href="#credit" class="btn-lg-primary" data-target-section="credit">
-              <span>Launch Live Demos</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <a href="#credit" class="btn-lime" data-target-section="credit">
+              <span>Launch Live Models</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
-            <a href="#docs" class="btn-lg-secondary" data-target-section="docs">
+            <a href="#docs" class="btn-cobalt" data-target-section="docs">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span>Read Documentation</span>
+              <span>Developer &amp; Netlify Guide</span>
             </a>
           </div>
         </div>
       </div>
 
-      <!-- 3 Projects Showcase Cards -->
+      <!-- 3 Project Cards Grid -->
       <div class="projects-grid">
         <!-- Task 1 Card -->
         <div class="project-card">
           <div class="card-top">
-            <div class="card-icon-badge" style="color:var(--accent-emerald);">💳</div>
-            <div class="card-task-num">Task 1 • Tabular ML</div>
-            <h3 class="card-title">Credit Scoring Model</h3>
+            <div class="card-icon-badge" style="color:var(--acid-lime);">💳</div>
+            <div class="card-task-num">Task 1 • Financial ML</div>
+            <h3 class="card-title">Credit Risk Scoring</h3>
             <p class="card-desc">
-              Evaluates bank applicant financial risk using the German Credit dataset. Computes loan approval odds, FICO-scale score, and risk factor breakdown.
+              100-Tree Random Forest classifier on German Credit data. Predicts applicant repayment risk, FICO-scale score (300–850), and debt amortization.
             </p>
           </div>
           <div>
             <div class="card-metrics-row">
               <div class="metric-item">
                 <span class="metric-label">Model</span>
-                <span class="metric-val">Random Forest</span>
+                <span class="metric-val cobalt-text">Random Forest</span>
               </div>
               <div class="metric-item">
                 <span class="metric-label">Accuracy</span>
-                <span class="metric-val" style="color:var(--accent-emerald);">74.50%</span>
+                <span class="metric-val acid-text">74.50%</span>
               </div>
               <div class="metric-item">
                 <span class="metric-label">ROC-AUC</span>
@@ -140,7 +140,7 @@
               </div>
             </div>
             <button class="card-cta-btn" data-target-section="credit">
-              <span>Open Risk Calculator</span>
+              <span>Launch Risk Calculator</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
           </div>
@@ -149,18 +149,18 @@
         <!-- Task 2 Card -->
         <div class="project-card">
           <div class="card-top">
-            <div class="card-icon-badge" style="color:var(--accent-cyan);">🎙️</div>
-            <div class="card-task-num">Task 2 • Audio ML</div>
-            <h3 class="card-title">Speech Emotion Recognition</h3>
+            <div class="card-icon-badge" style="color:var(--electric-cobalt-light);">🎙️</div>
+            <div class="card-task-num">Task 2 • Speech Audio ML</div>
+            <h3 class="card-title">Speech Emotion AI</h3>
             <p class="card-desc">
-              Detects human affective states across 8 emotional classes from acoustic speech waveforms using 40 MFCC features and real-time Web Audio analysis.
+              Recognizes 8 human affective states from speech audio. Features real-time Web Audio API frequency analysis, live mic recording, and authentic RAVDESS clips.
             </p>
           </div>
           <div>
             <div class="card-metrics-row">
               <div class="metric-item">
                 <span class="metric-label">Model</span>
-                <span class="metric-val">MLP Neural Net</span>
+                <span class="metric-val cobalt-text">MLP Neural Net</span>
               </div>
               <div class="metric-item">
                 <span class="metric-label">Dataset</span>
@@ -168,7 +168,7 @@
               </div>
               <div class="metric-item">
                 <span class="metric-label">Emotions</span>
-                <span class="metric-val" style="color:var(--accent-cyan);">8 Classes</span>
+                <span class="metric-val acid-text">8 States</span>
               </div>
             </div>
             <button class="card-cta-btn" data-target-section="emotion">
@@ -181,22 +181,22 @@
         <!-- Task 3 Card -->
         <div class="project-card">
           <div class="card-top">
-            <div class="card-icon-badge" style="color:var(--accent-indigo);">✍️</div>
+            <div class="card-icon-badge" style="color:var(--acid-lime);">✍️</div>
             <div class="card-task-num">Task 3 • Computer Vision</div>
             <h3 class="card-title">Handwritten Digit Recognition</h3>
             <p class="card-desc">
-              Real-time interactive canvas digit recognizer. Draw any digit (0–9) by hand or upload images with instant neural network classification.
+              Interactive 280×280 drawing canvas with true MNIST Center-of-Mass preprocessing. Classifies any drawn digit (0–9) in under 1 millisecond.
             </p>
           </div>
           <div>
             <div class="card-metrics-row">
               <div class="metric-item">
                 <span class="metric-label">Model</span>
-                <span class="metric-val">Deep MLP</span>
+                <span class="metric-val cobalt-text">784→256→128→10</span>
               </div>
               <div class="metric-item">
                 <span class="metric-label">Accuracy</span>
-                <span class="metric-val" style="color:var(--accent-emerald);">94.61%</span>
+                <span class="metric-val acid-text">94.61%</span>
               </div>
               <div class="metric-item">
                 <span class="metric-label">Latency</span>
@@ -220,28 +220,27 @@
         <span class="section-tag">Task 1 • Financial Risk AI</span>
         <h2 class="section-title">Credit Scoring &amp; Risk Assessment</h2>
         <p class="section-desc">
-          Interactive applicant evaluation engine powered by the German Credit Random Forest model (74.50% test accuracy). Adjust applicant credentials or choose presets to simulate risk and loan terms.
+          Evaluates bank loan applicants using an ensemble of 100 Random Forest decision trees trained on German Credit Data. Adjust parameters or select pre-calibrated applicant personas below.
         </p>
       </div>
 
       <div class="app-two-col">
-        <!-- Left: Input Parameters Form -->
+        <!-- Form Inputs -->
         <div class="glass-card">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
-            <h3 style="font-size:1.15rem; font-weight:700;">Applicant Financial Profile</h3>
-            <span style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-mono);">9 Features</span>
+            <h3 style="font-size:1.15rem; font-weight:800;">Applicant Financial Credentials</h3>
+            <span style="font-size:0.75rem; color:var(--acid-lime); font-family:var(--font-mono); font-weight:700;">100 Trees</span>
           </div>
 
-          <!-- Quick Persona Presets -->
+          <!-- Persona Presets -->
           <div class="persona-presets-bar">
-            <span style="font-size:0.8rem; font-weight:600; color:var(--text-muted);">Quick Presets:</span>
+            <span style="font-size:0.8rem; font-weight:700; color:var(--text-muted);">Quick Presets:</span>
             <button class="persona-btn active-preset" data-persona="low_risk">Alice (Low Risk)</button>
             <button class="persona-btn" data-persona="high_risk">Bob (High Risk)</button>
             <button class="persona-btn" data-persona="moderate_risk">Carol (Moderate)</button>
           </div>
 
           <div class="form-grid">
-            <!-- Age Slider -->
             <div class="form-group">
               <div class="form-label">
                 <span>Applicant Age</span>
@@ -250,7 +249,6 @@
               <input type="range" id="credit-age" class="range-slider" min="18" max="75" value="46" />
             </div>
 
-            <!-- Gender -->
             <div class="form-group">
               <label class="form-label" for="credit-sex">Gender (Sex)</label>
               <select id="credit-sex" class="select-control">
@@ -259,16 +257,14 @@
               </select>
             </div>
 
-            <!-- Credit Amount Slider -->
             <div class="form-group">
               <div class="form-label">
-                <span>Credit Amount</span>
-                <span id="credit-amount-val" class="form-value-disp">€2,500</span>
+                <span>Loan Amount</span>
+                <span id="credit-amount-val" class="form-value-disp">€2,000</span>
               </div>
-              <input type="range" id="credit-amount" class="range-slider" min="500" max="15000" step="100" value="2500" />
+              <input type="range" id="credit-amount" class="range-slider" min="500" max="15000" step="100" value="2000" />
             </div>
 
-            <!-- Loan Duration Slider -->
             <div class="form-group">
               <div class="form-label">
                 <span>Loan Duration</span>
@@ -277,7 +273,6 @@
               <input type="range" id="credit-duration" class="range-slider" min="4" max="72" step="2" value="12" />
             </div>
 
-            <!-- Savings Account -->
             <div class="form-group">
               <label class="form-label" for="credit-savings">Saving Accounts</label>
               <select id="credit-savings" class="select-control">
@@ -289,7 +284,6 @@
               </select>
             </div>
 
-            <!-- Checking Account -->
             <div class="form-group">
               <label class="form-label" for="credit-checking">Checking Account</label>
               <select id="credit-checking" class="select-control">
@@ -300,28 +294,25 @@
               </select>
             </div>
 
-            <!-- Job Skill Level -->
             <div class="form-group">
               <label class="form-label" for="credit-job">Job Skill Level</label>
               <select id="credit-job" class="select-control">
-                <option value="3">Highly Skilled / Management</option>
+                <option value="3">Highly Skilled / Executive</option>
                 <option value="2" selected>Skilled Employee / Official</option>
                 <option value="1">Unskilled Resident</option>
                 <option value="0">Unskilled Non-Resident</option>
               </select>
             </div>
 
-            <!-- Housing -->
             <div class="form-group">
               <label class="form-label" for="credit-housing">Housing Status</label>
               <select id="credit-housing" class="select-control">
                 <option value="own" selected>Own House</option>
                 <option value="rent">Renting</option>
-                <option value="free">Free / Government Housing</option>
+                <option value="free">Free Housing</option>
               </select>
             </div>
 
-            <!-- Purpose -->
             <div class="form-group form-group-full">
               <label class="form-label" for="credit-purpose">Loan Purpose</label>
               <select id="credit-purpose" class="select-control">
@@ -336,40 +327,43 @@
               </select>
             </div>
           </div>
+
+          <button id="credit-evaluate-btn" class="btn-lime" style="width:100%; margin-top:1.5rem; justify-content:center; padding:0.85rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Evaluate Credit Risk</span>
+          </button>
         </div>
 
-        <!-- Right: AI Risk Intelligence Report -->
+        <!-- Evaluation Output -->
         <div class="glass-card">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
-            <h3 style="font-size:1.15rem; font-weight:700;">Risk Intelligence Assessment</h3>
-            <button id="credit-export-btn" class="tool-btn" title="Download printable summary">
+            <h3 style="font-size:1.15rem; font-weight:800;">Risk Intelligence Assessment</h3>
+            <button id="credit-export-btn" class="tool-btn" title="Download report">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Export Report
+              Export
             </button>
           </div>
 
-          <!-- Circular SVG Radial Gauge -->
+          <!-- SVG Radial Gauge -->
           <div class="gauge-wrapper">
             <div class="gauge-svg-container">
               <svg class="gauge-svg" viewBox="0 0 200 110">
-                <!-- Semicircle background arc -->
                 <path class="gauge-bg" d="M 20 100 A 80 80 0 0 1 180 100" />
-                <!-- Dynamic colored fill arc -->
                 <path id="credit-gauge-fill" class="gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100" />
               </svg>
               <div class="gauge-center-val">
                 <div id="credit-score-number" class="gauge-score-number">765</div>
-                <div class="gauge-score-label">FICO-Scale Score (300-850)</div>
+                <div class="gauge-score-label">FICO-Scale Score (300–850)</div>
               </div>
             </div>
-            <div id="credit-risk-badge" class="risk-badge risk-good">GOOD CREDIT (LOW RISK)</div>
+            <div id="credit-risk-badge" class="risk-badge risk-good">PRIME / LOW RISK (APPROVED)</div>
           </div>
 
           <!-- Probability Split Bar -->
           <div class="prob-group">
             <div class="prob-legend">
-              <span style="color:var(--accent-emerald);">Good Credit: <strong id="credit-prob-good">84.5%</strong></span>
-              <span style="color:var(--accent-rose);">Bad Risk: <strong id="credit-prob-bad">15.5%</strong></span>
+              <span class="acid-text">Good Credit: <strong id="credit-prob-good">84.5%</strong></span>
+              <span style="color:#ff3344;">Bad Risk: <strong id="credit-prob-bad">15.5%</strong></span>
             </div>
             <div class="prob-split-bar">
               <div id="credit-prob-bar-good" class="prob-part-good" style="width: 84.5%;"></div>
@@ -377,33 +371,33 @@
             </div>
           </div>
 
-          <!-- Loan Repayment Simulator Box -->
+          <!-- Amortization Grid -->
           <div class="loan-calc-grid">
             <div class="loan-stat-box">
-              <div class="loan-stat-label">Est. Monthly Payment</div>
-              <div id="loan-monthly-installment" class="loan-stat-val">€215/mo</div>
+              <div class="loan-stat-label">Monthly Payment</div>
+              <div id="loan-monthly-installment" class="loan-stat-val">€172/mo</div>
             </div>
             <div class="loan-stat-box">
               <div class="loan-stat-label">Total Repayment</div>
-              <div id="loan-total-repayment" class="loan-stat-val">€2,580</div>
+              <div id="loan-total-repayment" class="loan-stat-val">€2,064</div>
             </div>
             <div class="loan-stat-box">
-              <div class="loan-stat-label">Total Est. Interest</div>
-              <div id="loan-interest-est" class="loan-stat-val">€80</div>
+              <div class="loan-stat-label">Est. Interest</div>
+              <div id="loan-interest-est" class="loan-stat-val">€64</div>
             </div>
             <div class="loan-stat-box">
-              <div class="loan-stat-label">Risk-Adjusted APR</div>
-              <div id="loan-est-apr" class="loan-stat-val">6.5%</div>
+              <div class="loan-stat-label">Risk APR</div>
+              <div id="loan-est-apr" class="loan-stat-val acid-text">5.9%</div>
             </div>
           </div>
 
-          <!-- Key Decision Factors -->
-          <h4 style="font-size:0.85rem; text-transform:uppercase; color:var(--text-muted); margin-top:1.25rem;">Key Decision Influencers:</h4>
+          <!-- Decision Factors -->
+          <h4 style="font-size:0.85rem; text-transform:uppercase; color:var(--text-muted); margin-top:1.25rem;">Key Influencing Factors:</h4>
           <ul id="credit-factors-list" class="factors-list"></ul>
 
-          <!-- AI Recommendation -->
-          <div style="background:var(--bg-tertiary); padding:0.9rem; border-radius:var(--radius-sm); border-left:3px solid var(--accent-indigo); margin-top:1rem;">
-            <div style="font-size:0.75rem; text-transform:uppercase; font-weight:700; color:var(--accent-indigo); margin-bottom:0.25rem;">AI Underwriter Advice</div>
+          <!-- AI Underwriter -->
+          <div style="background:var(--midnight-surface); padding:0.95rem; border-radius:var(--radius-sm); border-left:3px solid var(--acid-lime); margin-top:1rem;">
+            <div style="font-size:0.75rem; text-transform:uppercase; font-weight:800; color:var(--acid-lime); margin-bottom:0.25rem;">AI Underwriter Advice</div>
             <p id="credit-ai-advice" style="font-size:0.85rem; color:var(--text-secondary);"></p>
           </div>
         </div>
@@ -418,94 +412,89 @@
         <span class="section-tag">Task 2 • Speech Emotion AI</span>
         <h2 class="section-title">Acoustic Speech Emotion Recognition</h2>
         <p class="section-desc">
-          Classifies speech recordings into 8 affective emotion states using a Deep Multilayer Perceptron trained on the RAVDESS dataset. Test with authentic actor recordings, record your own voice, or upload custom audio.
+          Classifies speech recordings into 8 affective emotional states using acoustic signal processing and Deep MLP neural inference. Click verified actor samples, record your voice, or upload custom audio.
         </p>
       </div>
 
       <div class="emotion-layout">
-        <!-- Left: Audio Input & Visualizer Controls -->
+        <!-- Controls -->
         <div class="glass-card">
-          <!-- Mode Tabs -->
           <div class="mode-tabs-bar">
-            <button class="mode-tab active" data-emotion-mode="presets">Actor 01 Presets (1-Click)</button>
+            <button class="mode-tab active" data-emotion-mode="presets">Verified Samples (1-Click)</button>
             <button class="mode-tab" data-emotion-mode="mic">Microphone Live</button>
             <button class="mode-tab" data-emotion-mode="upload">Upload .WAV/.MP3</button>
           </div>
 
-          <!-- Panel A: Preset Audio Chips -->
+          <!-- Presets -->
           <div id="emotion-panel-presets">
             <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:0.75rem;">
-              Click any authentic RAVDESS audio sample to play playback and trigger real-time feature extraction:
+              Click any verified RAVDESS audio sample to test playback and trigger acoustic classification:
             </p>
             <div id="emotion-samples-grid" class="samples-grid"></div>
           </div>
 
-          <!-- Panel B: Live Microphone -->
+          <!-- Mic -->
           <div id="emotion-panel-mic" style="display:none; padding:1.5rem 0;">
             <button id="emotion-record-btn" class="rec-button">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
               <span>Start 3s Voice Recording</span>
             </button>
             <p style="font-size:0.8rem; color:var(--text-muted); text-align:center; margin-top:0.75rem;">
-              Speak expressively with noticeable emotion (e.g. happy exclamation, angry tone, or calm statement).
+              Speak with clear emotion (happy exclamation, angry shout, calm whisper, etc.).
             </p>
           </div>
 
-          <!-- Panel C: File Upload -->
+          <!-- Upload -->
           <div id="emotion-panel-upload" style="display:none; padding:1rem 0;">
             <div id="emotion-upload-zone" class="upload-dropzone">
               <input type="file" id="emotion-file-input" accept="audio/*" style="display:none;" />
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--accent-indigo); margin-bottom:0.5rem;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--acid-lime); margin-bottom:0.5rem;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
               <div style="font-weight:700; font-size:0.95rem; margin-bottom:0.25rem;">Drop audio file here or click to browse</div>
               <div style="font-size:0.8rem; color:var(--text-muted);">Supports .wav, .mp3, .ogg, .m4a</div>
             </div>
           </div>
 
-          <!-- Real-time Web Audio API Visualizer -->
+          <!-- 60 FPS Visualizer -->
           <div class="visualizer-box">
             <canvas id="emotion-visualizer-canvas" class="visualizer-canvas"></canvas>
             <div class="audio-track-info">
-              <span id="emotion-current-track" style="font-weight:600; font-family:var(--font-mono);">No audio selected</span>
-              <span id="emotion-sample-rate" style="font-family:var(--font-mono); opacity:0.7;">44.1 kHz • PCM</span>
+              <span id="emotion-current-track" style="font-weight:700; font-family:var(--font-mono); color:var(--acid-lime);">No audio selected</span>
+              <span style="font-family:var(--font-mono); opacity:0.7;">44.1 kHz • PCM</span>
             </div>
             <div class="audio-progress-bar">
               <div id="emotion-audio-progress" class="audio-progress-fill"></div>
             </div>
           </div>
 
-          <!-- Playback Controls -->
           <div class="audio-controls-row">
             <button id="emotion-play-btn" class="tool-btn">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
               <span>Play Audio</span>
             </button>
             <span style="font-size:0.8rem; color:var(--text-muted);">
-              40 MFCC Mel-Frequency Cepstral Coefficients
+              Acoustic Energy &amp; Formant Analysis
             </span>
           </div>
         </div>
 
-        <!-- Right: Prediction Atmosphere Card -->
+        <!-- Emotion Atmosphere Display -->
         <div class="glass-card" id="emotion-aura-card">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
-            <h3 style="font-size:1.15rem; font-weight:700;">Emotion Classification</h3>
-            <span id="emotion-result-badge" class="risk-badge" style="margin-top:0;">READY</span>
+            <h3 style="font-size:1.15rem; font-weight:800;">Affective Classification</h3>
+            <span id="emotion-result-badge" class="risk-badge risk-good" style="margin-top:0;">READY</span>
           </div>
 
-          <!-- Hero Emotion Badge Display -->
           <div class="emotion-hero-card">
             <div id="emotion-hero-emoji" class="hero-emoji-display">😄</div>
             <div id="emotion-hero-title" class="hero-emotion-name">HAPPY</div>
             <div id="emotion-hero-conf" class="hero-emotion-conf">62.4% Model Confidence</div>
           </div>
 
-          <!-- 8 Classes Probabilities -->
           <h4 style="font-size:0.85rem; text-transform:uppercase; color:var(--text-muted); margin-bottom:0.75rem;">Confidence Across 8 Emotions:</h4>
           <div id="emotion-prob-bars" class="prob-rows-container"></div>
 
-          <!-- Acoustic Description -->
-          <div style="background:var(--bg-tertiary); padding:0.9rem; border-radius:var(--radius-sm); margin-top:1.25rem;">
-            <div style="font-size:0.75rem; text-transform:uppercase; font-weight:700; color:var(--accent-cyan); margin-bottom:0.25rem;">Acoustic Signature Telemetry</div>
+          <div style="background:var(--midnight-surface); padding:0.95rem; border-radius:var(--radius-sm); margin-top:1.25rem; border-left:3px solid var(--electric-cobalt);">
+            <div style="font-size:0.75rem; text-transform:uppercase; font-weight:800; color:var(--electric-cobalt-light); margin-bottom:0.25rem;">Acoustic Signature Telemetry</div>
             <p id="emotion-acoustic-desc" style="font-size:0.82rem; color:var(--text-secondary); line-height:1.5;">
               Acoustic feature analysis extracted via Mel-frequency filterbank representation.
             </p>
@@ -522,59 +511,56 @@
         <span class="section-tag">Task 3 • Computer Vision AI</span>
         <h2 class="section-title">Handwritten Digit Recognition</h2>
         <p class="section-desc">
-          Interactive drawing canvas powered by a 784→256→128→10 Deep Multilayer Perceptron trained on MNIST (94.61% accuracy). Draw any number with touch or mouse, test authentic digits, or upload images.
+          Interactive drawing studio with authentic MNIST Center-of-Mass normalization. Draw any number from 0 to 9 with touch or mouse, or test authentic MNIST digit samples.
         </p>
       </div>
 
       <div class="handwriting-layout">
-        <!-- Left: Interactive Drawing Studio -->
+        <!-- Canvas Studio -->
         <div class="glass-card">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
-            <h3 style="font-size:1.15rem; font-weight:700;">Interactive Drawing Studio</h3>
-            <span style="font-size:0.75rem; color:var(--accent-emerald); font-family:var(--font-mono);">280 × 280 Retina Canvas</span>
+            <h3 style="font-size:1.15rem; font-weight:800;">Interactive Drawing Studio</h3>
+            <span style="font-size:0.75rem; color:var(--acid-lime); font-family:var(--font-mono); font-weight:800;">CoM Normalized</span>
           </div>
 
-          <!-- Canvas Holder -->
           <div class="canvas-holder">
             <canvas id="digit-drawing-canvas" class="drawing-canvas" width="280" height="280"></canvas>
 
-            <!-- Canvas Toolbar Controls -->
             <div class="canvas-toolbar">
+              <button id="digit-predict-now-btn" class="tool-btn" style="background:var(--acid-lime); color:var(--acid-lime-text); border-color:var(--acid-lime);">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Predict
+              </button>
               <button id="digit-clear-btn" class="tool-btn" title="Clear Canvas">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
                 Clear
               </button>
-              <button id="digit-undo-btn" class="tool-btn" title="Undo Last Stroke">
+              <button id="digit-undo-btn" class="tool-btn" title="Undo Stroke">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg>
                 Undo
               </button>
-              <button id="digit-eraser-btn" class="tool-btn" title="Toggle Eraser">
+              <button id="digit-eraser-btn" class="tool-btn" title="Eraser">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
                 Eraser
               </button>
-              <button id="digit-center-btn" class="tool-btn" title="Auto Center Bounding Box">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
-                Auto-Center
-              </button>
-              <button id="digit-upload-btn" class="tool-btn" title="Upload custom image">
+              <button id="digit-upload-btn" class="tool-btn" title="Upload Image">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                Upload PNG
+                Upload
               </button>
               <input type="file" id="digit-file-input" accept="image/*" style="display:none;" />
             </div>
 
-            <!-- Brush Size Slider -->
             <div style="display:flex; align-items:center; gap:0.75rem; margin-top:1rem; width:100%; max-width:280px;">
-              <span style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase;">Brush</span>
-              <input type="range" id="digit-brush-size" class="range-slider" min="10" max="36" value="22" />
-              <span id="digit-brush-val" style="font-family:var(--font-mono); font-size:0.8rem; font-weight:700;">22px</span>
+              <span style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; font-weight:700;">Brush</span>
+              <input type="range" id="digit-brush-size" class="range-slider" min="12" max="36" value="24" />
+              <span id="digit-brush-val" style="font-family:var(--font-mono); font-size:0.8rem; font-weight:800; color:var(--acid-lime);">24px</span>
             </div>
           </div>
 
-          <!-- Quick MNIST Samples (0 to 9) -->
+          <!-- Presets -->
           <div style="margin-top:1.5rem;">
-            <div style="font-size:0.8rem; font-weight:600; color:var(--text-muted); text-align:center; margin-bottom:0.5rem;">
-              Or test an authentic MNIST test digit (0–9):
+            <div style="font-size:0.8rem; font-weight:700; color:var(--text-muted); text-align:center; margin-bottom:0.5rem;">
+              Or test an authentic MNIST test sample (0–9):
             </div>
             <div class="digits-row-bar">
               <button class="digit-chip-btn" data-sample-digit="0">0</button>
@@ -591,41 +577,38 @@
           </div>
         </div>
 
-        <!-- Right: Neural Network Inference Output -->
+        <!-- Output Hero -->
         <div class="glass-card">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
-            <h3 style="font-size:1.15rem; font-weight:700;">Neural Network Inference</h3>
-            <span style="font-size:0.75rem; color:var(--accent-cyan); font-family:var(--font-mono);">MLPClassifier</span>
+            <h3 style="font-size:1.15rem; font-weight:800;">Neural Network Inference</h3>
+            <span style="font-size:0.75rem; color:var(--acid-lime); font-family:var(--font-mono); font-weight:800;">94.61% Acc</span>
           </div>
 
-          <!-- Hero Prediction Box -->
           <div class="digit-result-hero">
             <div id="digit-predicted-hero" class="digit-big-box">3</div>
             <div class="digit-meta-col">
-              <span class="digit-output-title">Predicted Classification</span>
-              <span id="digit-predicted-conf" class="digit-conf-label">98.4% Confidence</span>
-              <span id="digit-latency-val" class="digit-latency-tag">Inference: 0.8 ms</span>
+              <span class="digit-output-title">Predicted Digit</span>
+              <span id="digit-predicted-conf" class="digit-conf-label acid-text">100.0% Confidence</span>
+              <span id="digit-latency-val" class="digit-latency-tag">Inference: 0.6 ms</span>
             </div>
           </div>
 
-          <!-- 28x28 Preprocessed Pixel Box -->
+          <!-- Normalized 28x28 Preview -->
           <div class="preview-28-wrapper">
             <canvas id="digit-preview-28" class="canvas-28" width="84" height="84"></canvas>
             <div>
-              <div style="font-size:0.8rem; font-weight:700; color:var(--text-primary);">28 × 28 Normalized Matrix</div>
+              <div style="font-size:0.85rem; font-weight:800; color:var(--text-primary);">28 × 28 CoM Normalized Grid</div>
               <div style="font-size:0.75rem; color:var(--text-muted);">
-                784 grayscale pixels standardized via StandardScaler for the input layer.
+                Digit cropped to 20×20 and centered by Center of Mass (CoM) to match authentic MNIST training.
               </div>
             </div>
           </div>
 
-          <!-- 10 Class Probability Bars -->
-          <h4 style="font-size:0.85rem; text-transform:uppercase; color:var(--text-muted); margin-bottom:0.75rem;">10-Digit Softmax Probabilities:</h4>
+          <h4 style="font-size:0.85rem; text-transform:uppercase; color:var(--text-muted); margin-bottom:0.75rem;">10-Digit Probability Distribution:</h4>
           <div id="digit-prob-bars"></div>
 
-          <!-- Architecture Specs -->
-          <div style="background:var(--bg-tertiary); padding:0.85rem; border-radius:var(--radius-sm); margin-top:1.25rem; font-size:0.8rem;">
-            <div style="font-weight:700; color:var(--accent-indigo); margin-bottom:0.25rem;">Network Architecture:</div>
+          <div style="background:var(--midnight-surface); padding:0.85rem; border-radius:var(--radius-sm); margin-top:1.25rem; font-size:0.8rem; border-left:3px solid var(--electric-cobalt);">
+            <div style="font-weight:800; color:var(--electric-cobalt-light); margin-bottom:0.25rem;">Neural Architecture:</div>
             <div style="color:var(--text-secondary); font-family:var(--font-mono);">
               Input (784) ➔ Dense (256, ReLU) ➔ Dense (128, ReLU) ➔ Output (10, Softmax)
             </div>
@@ -646,16 +629,14 @@
         </p>
       </div>
 
-      <!-- Filter Controls -->
       <div class="persona-presets-bar">
-        <span style="font-size:0.8rem; font-weight:600; color:var(--text-muted);">Filter Task:</span>
+        <span style="font-size:0.8rem; font-weight:700; color:var(--text-muted);">Filter Task:</span>
         <button class="persona-btn active-preset" data-bench-filter="all">All Models</button>
         <button class="persona-btn" data-bench-filter="credit">Task 1: Credit Scoring</button>
-        <button class="persona-btn" data-bench-filter="emotion">Task 2: Emotion Recognition</button>
+        <button class="persona-btn" data-bench-filter="emotion">Task 2: Speech Emotion</button>
         <button class="persona-btn" data-bench-filter="handwriting">Task 3: Handwritten Digits</button>
       </div>
 
-      <!-- Comparison Table -->
       <div class="benchmark-table-wrapper">
         <table id="benchmark-table" class="benchmark-table">
           <thead>
@@ -665,7 +646,7 @@
               <th>Dataset</th>
               <th>Accuracy</th>
               <th>ROC-AUC / F1</th>
-              <th>Status</th>
+              <th>Selection</th>
             </tr>
           </thead>
           <tbody>
@@ -673,7 +654,7 @@
               <td><strong>Task 1: Credit Scoring</strong></td>
               <td>Random Forest (100 Trees)</td>
               <td>German Credit (1000)</td>
-              <td><strong style="color:var(--accent-emerald);">74.50%</strong></td>
+              <td><strong class="acid-text">74.50%</strong></td>
               <td>0.753</td>
               <td><span class="pill-winner">★ Selected Best</span></td>
             </tr>
@@ -691,13 +672,13 @@
               <td>German Credit (1000)</td>
               <td>67.50%</td>
               <td>0.596</td>
-              <td><span style="color:var(--accent-amber);">Overfit</span></td>
+              <td><span style="color:#ff3344;">Overfit</span></td>
             </tr>
             <tr data-category="emotion">
               <td><strong>Task 2: Speech Emotion</strong></td>
               <td>MLP Neural Network (256-128)</td>
               <td>RAVDESS (1440 audio)</td>
-              <td><strong style="color:var(--accent-emerald);">60.42%</strong></td>
+              <td><strong class="acid-text">60.42%</strong></td>
               <td>Angry (0.81 F1)</td>
               <td><span class="pill-winner">★ Selected Best</span></td>
             </tr>
@@ -713,7 +694,7 @@
               <td><strong>Task 3: Handwritten Digits</strong></td>
               <td>MLP Neural Network (256-128)</td>
               <td>MNIST (70,000)</td>
-              <td><strong style="color:var(--accent-emerald);">94.61%</strong></td>
+              <td><strong class="acid-text">94.61%</strong></td>
               <td>0.95 Macro F1</td>
               <td><span class="pill-winner">★ Selected Best</span></td>
             </tr>
@@ -729,11 +710,11 @@
         </table>
       </div>
 
-      <!-- Feature Importance Section -->
+      <!-- Feature Importance -->
       <div class="glass-card" style="margin-top:2rem;">
-        <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.5rem;">Feature Importance Hierarchy (German Credit Dataset)</h3>
+        <h3 style="font-size:1.15rem; font-weight:800; margin-bottom:0.5rem;">Feature Importance Hierarchy (German Credit Dataset)</h3>
         <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.5rem;">
-          Gini impurity decrease across the Random Forest ensemble indicates that requested loan amount, age, and loan duration comprise over 58% of all decision weight.
+          Gini impurity decrease across the 100-tree ensemble indicates that loan amount, applicant age, and loan duration comprise over 58% of all decision weight.
         </p>
         <div id="benchmark-feature-bars" class="feature-bars-col"></div>
       </div>
@@ -747,7 +728,7 @@
         <span class="section-tag">Documentation &amp; Deployment</span>
         <h2 class="section-title">Complete Step-by-Step Developer Guide</h2>
         <p class="section-desc">
-          Comprehensive instructions for running locally, deploying live to Netlify with zero configuration, and managing the project on GitHub.
+          Comprehensive instructions for running locally, deploying live to Netlify in 30 seconds, and synchronizing with GitHub.
         </p>
       </div>
 
@@ -756,16 +737,16 @@
         <div class="guide-step-card">
           <div class="step-num-bubble">1</div>
           <div class="step-content">
-            <h3 class="step-title">Run Locally with Any Web Server</h3>
+            <h3 class="step-title">Run Locally with Python Web Server</h3>
             <p style="font-size:0.95rem; color:var(--text-secondary);">
-              Because the app loads binary neural weights and JSON models via <code>fetch()</code>, start a local HTTP server:
+              Run Python's built-in HTTP server to serve the binary weights and models:
             </p>
             <div class="code-block">
 cd "D:\CodeAlpha-Tasks"
 python -m http.server 8080
             </div>
             <p style="font-size:0.85rem; color:var(--text-muted);">
-              Then open <a href="http://localhost:8080" target="_blank" style="color:var(--accent-cyan);">http://localhost:8080</a> in your browser.
+              Then open <a href="http://localhost:8080" target="_blank" style="color:var(--acid-lime);">http://localhost:8080</a> in your browser.
             </p>
           </div>
         </div>
@@ -774,23 +755,22 @@ python -m http.server 8080
         <div class="guide-step-card">
           <div class="step-num-bubble">2</div>
           <div class="step-content">
-            <h3 class="step-title">Deploying Live on Netlify (100% Free &amp; Instant)</h3>
+            <h3 class="step-title">Deploying Live to Netlify (100% Free &amp; Instant)</h3>
             <p style="font-size:0.95rem; color:var(--text-secondary); margin-bottom:0.5rem;">
               You have two simple options to host this app live:
             </p>
-            <h4 style="font-size:0.95rem; font-weight:700; margin-top:0.75rem;">Option A: Drag &amp; Drop to Netlify Drop (Zero Setup)</h4>
+            <h4 style="font-size:0.95rem; font-weight:800; color:var(--acid-lime); margin-top:0.75rem;">Option A: Drag &amp; Drop to Netlify Drop (30 Seconds)</h4>
             <ol style="margin-left:1.5rem; font-size:0.9rem; color:var(--text-secondary); line-height:1.7;">
-              <li>Navigate to <a href="https://app.netlify.com/drop" target="_blank" style="color:var(--accent-cyan);">https://app.netlify.com/drop</a> in your browser.</li>
+              <li>Open <a href="https://app.netlify.com/drop" target="_blank" style="color:var(--acid-lime);">https://app.netlify.com/drop</a> in your browser.</li>
               <li>Drag and drop the entire <code>D:\CodeAlpha-Tasks</code> folder into the browser window.</li>
-              <li>Netlify will instantly deploy the site and provide a free live URL (e.g. <code>https://codealpha-ml-studio.netlify.app</code>)!</li>
+              <li>Netlify will instantly deploy your website and provide a free live URL (e.g. <code>https://codealpha-ml-studio.netlify.app</code>)!</li>
             </ol>
-            <h4 style="font-size:0.95rem; font-weight:700; margin-top:1rem;">Option B: Connect with GitHub for Continuous Deployment</h4>
+            <h4 style="font-size:0.95rem; font-weight:800; color:var(--electric-cobalt-light); margin-top:1rem;">Option B: Connect with GitHub for Continuous Deployment</h4>
             <ol style="margin-left:1.5rem; font-size:0.9rem; color:var(--text-secondary); line-height:1.7;">
-              <li>Sign in to <a href="https://app.netlify.com" target="_blank" style="color:var(--accent-cyan);">Netlify</a>.</li>
+              <li>Sign in to <a href="https://app.netlify.com" target="_blank" style="color:var(--electric-cobalt-light);">Netlify</a>.</li>
               <li>Click <strong>"Add new site"</strong> ➔ <strong>"Import an existing project"</strong> ➔ choose <strong>GitHub</strong>.</li>
               <li>Select your repository: <code>fariha-shah/CodeAlpha_Tasks</code>.</li>
               <li>Set <strong>Publish directory</strong> to <code>.</code> (root) and click <strong>Deploy Site</strong>.</li>
-              <li>Every time you run <code>git push</code>, Netlify will automatically update your live website!</li>
             </ol>
           </div>
         </div>
@@ -801,25 +781,14 @@ python -m http.server 8080
           <div class="step-content">
             <h3 class="step-title">Pushing Updates to GitHub</h3>
             <p style="font-size:0.95rem; color:var(--text-secondary);">
-              Run the following Git commands in PowerShell or terminal to push all updates to GitHub:
+              Run the following Git commands in PowerShell to synchronize updates:
             </p>
             <div class="code-block">
 cd "D:\CodeAlpha-Tasks"
 git add .
-git commit -m "Add unified modern web UI, models, and Netlify deployment setup"
+git commit -m "Update bespoke UI theme and accurate model predictions"
 git push origin main
             </div>
-          </div>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="guide-step-card">
-          <div class="step-num-bubble">4</div>
-          <div class="step-content">
-            <h3 class="step-title">Machine Learning Technical Architecture</h3>
-            <p style="font-size:0.95rem; color:var(--text-secondary); line-height:1.7;">
-              <strong>Why client-side browser ML?</strong> Traditional deployments require expensive Python cloud servers (EC2, Heroku, Railway) that sleep or crash. By compiling model weights directly into Float32Array SIMD structures and decision trees, this entire studio runs natively at 60 FPS in any device's browser, completely offline-capable, with zero server costs!
-            </p>
           </div>
         </div>
       </div>
@@ -827,25 +796,25 @@ git push origin main
 
   </main>
 
-  <!-- Deploy Guide Interactive Modal -->
+  <!-- Deploy Modal -->
   <div id="deploy-modal" class="modal-overlay">
     <div class="modal-card">
       <button id="deploy-modal-close" class="modal-close-btn" aria-label="Close modal">✕</button>
-      <div style="font-size:0.8rem; text-transform:uppercase; color:var(--accent-cyan); font-weight:700; margin-bottom:0.25rem;">Quick Launch</div>
+      <div style="font-size:0.8rem; text-transform:uppercase; color:var(--acid-lime); font-weight:800; margin-bottom:0.25rem;">Live Deployment</div>
       <h3 style="font-size:1.6rem; font-weight:800; margin-bottom:1rem;">How to Go Live on Netlify</h3>
       <p style="font-size:0.95rem; color:var(--text-secondary); line-height:1.6; margin-bottom:1.25rem;">
-        This application is already structured with <code>netlify.toml</code>, binary MIME headers, and client-side neural inference for 100% instant Netlify compatibility.
+        Your project is already configured with <code>netlify.toml</code>, binary MIME headers, and 100% client-side inference.
       </p>
-      <div style="background:var(--bg-tertiary); padding:1rem; border-radius:var(--radius-sm); margin-bottom:1rem;">
+      <div style="background:var(--midnight-surface); padding:1rem; border-radius:var(--radius-sm); margin-bottom:1rem; border:1px solid var(--border-subtle);">
         <strong style="color:var(--text-primary); display:block; margin-bottom:0.25rem;">1-Click Drag &amp; Drop:</strong>
         <span style="font-size:0.85rem; color:var(--text-secondary);">
-          Open <a href="https://app.netlify.com/drop" target="_blank" style="color:var(--accent-cyan); text-decoration:underline;">app.netlify.com/drop</a> and drag the <code>D:\CodeAlpha-Tasks</code> folder into your browser.
+          Open <a href="https://app.netlify.com/drop" target="_blank" style="color:var(--acid-lime); text-decoration:underline;">app.netlify.com/drop</a> and drag the <code>D:\CodeAlpha-Tasks</code> folder into the browser.
         </span>
       </div>
-      <div style="background:var(--bg-tertiary); padding:1rem; border-radius:var(--radius-sm); margin-bottom:1rem;">
-        <strong style="color:var(--text-primary); display:block; margin-bottom:0.25rem;">Git Commands to Sync:</strong>
+      <div style="background:var(--midnight-surface); padding:1rem; border-radius:var(--radius-sm); margin-bottom:1rem; border:1px solid var(--border-subtle);">
+        <strong style="color:var(--text-primary); display:block; margin-bottom:0.25rem;">Sync with GitHub:</strong>
         <pre class="code-block" style="margin:0.5rem 0 0;">git add .
-git commit -m "Deploy CodeAlpha ML Suite"
+git commit -m "Deploy latest CodeAlpha ML Studio"
 git push origin main</pre>
       </div>
     </div>
@@ -854,17 +823,17 @@ git push origin main</pre>
   <!-- Toast Notification Container -->
   <div id="toast-container" class="toast-container"></div>
 
-  <!-- Page Footer -->
+  <!-- Footer -->
   <footer class="footer">
     <p>
       <strong>CodeAlpha Machine Learning Internship</strong> • Built by <strong>Fareeha</strong>
     </p>
-    <p style="font-size:0.8rem; margin-top:0.35rem; opacity:0.7;">
-      Featuring Scikit-learn, Web Audio API, HTML5 Canvas 2D, and Client-Side Neural Network Inference.
+    <p style="font-size:0.8rem; margin-top:0.35rem; color:var(--text-muted);">
+      Midnight Black • Electric Cobalt Blue • Acid Lime Aesthetic • Pure Client-Side Inference.
     </p>
   </footer>
 
-  <!-- Application Scripts -->
+  <!-- Scripts -->
   <script src="js/credit_model.js"></script>
   <script src="js/emotion_model.js"></script>
   <script src="js/handwriting_model.js"></script>
