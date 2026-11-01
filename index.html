@@ -1,920 +1,1698 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="dark">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CodeAlpha ML Studio — Interactive Machine Learning Portfolio</title>
-  <meta name="description" content="Unified Interactive AI/ML Web Application by Fareeha featuring German Credit Risk Scoring, Speech Emotion Recognition, and MNIST Handwritten Digit Recognition in Midnight Black, Electric Cobalt Blue, and Acid Lime." />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeAlpha ML Studio — Interactive Machine Learning Portfolio</title>
+    <meta
+      name="description"
+      content="Unified Interactive AI/ML Web Application by Fareeha featuring German Credit Risk Scoring, Speech Emotion Recognition, and MNIST Handwritten Digit Recognition in Midnight Black, Electric Cobalt Blue, and Acid Lime."
+    />
 
-  <!-- Google Fonts: Outfit, Inter, JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Google Fonts: Outfit, Inter, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Master Stylesheet -->
-  <link rel="stylesheet" href="css/style.css" />
+    <!-- Master Stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
 
-  <!-- Local Lucide Icons Script -->
-  <script src="js/lucide.min.js"></script>
-</head>
-<body>
+    <!-- Local Lucide Icons Script -->
+    <script src="js/lucide.min.js"></script>
+  </head>
+  <body>
+    <!-- Ambient Glow Background -->
+    <div class="ambient-glow"></div>
 
-  <!-- Ambient Glow Background -->
-  <div class="ambient-glow"></div>
-
-  <!-- Top Navigation Bar -->
-  <header class="navbar">
-    <div class="nav-container">
-      <a href="#home" class="brand-group" data-target-section="home">
-        <div class="brand-logo-icon">α</div>
-        <div class="brand-text-col">
-          <span class="brand-title">CodeAlpha <span class="lime-highlight">ML Studio</span></span>
-          <span class="brand-subtitle">Fareeha • Machine Learning Intern</span>
-        </div>
-      </a>
-
-      <!-- Desktop Navigation Links -->
-      <nav>
-        <ul class="nav-links">
-          <li>
-            <a href="#home" class="nav-link active" data-target-section="home">
-              <i data-lucide="layout-dashboard" style="width:16px; height:16px;"></i>
-              <span>Hub</span>
-            </a>
-          </li>
-          <li>
-            <a href="#credit" class="nav-link" data-target-section="credit">
-              <i data-lucide="credit-card" style="width:16px; height:16px;"></i>
-              <span>Credit Risk</span>
-            </a>
-          </li>
-          <li>
-            <a href="#emotion" class="nav-link" data-target-section="emotion">
-              <i data-lucide="mic" style="width:16px; height:16px;"></i>
-              <span>Speech Emotion</span>
-            </a>
-          </li>
-          <li>
-            <a href="#handwriting" class="nav-link" data-target-section="handwriting">
-              <i data-lucide="pen-tool" style="width:16px; height:16px;"></i>
-              <span>MNIST Canvas</span>
-            </a>
-          </li>
-          <li>
-            <a href="#benchmarks" class="nav-link" data-target-section="benchmarks">
-              <i data-lucide="bar-chart-2" style="width:16px; height:16px;"></i>
-              <span>Benchmarks</span>
-            </a>
-          </li>
-         
-        </ul>
-      </nav>
-
-      <!-- Action Buttons -->
-      <div class="nav-actions">
-        <button id="theme-toggle-btn" class="icon-btn" title="Toggle Theme" aria-label="Toggle Theme">
-          <i data-lucide="sun" style="width:18px; height:18px;"></i>
-        </button>
-        <button id="sound-toggle-btn" class="icon-btn" title="Toggle Sound Feedback" aria-label="Toggle Sound">
-          <i data-lucide="volume-2" style="width:18px; height:18px;"></i>
-        </button>
-        <button id="deploy-guide-btn" class="btn-lime">
-          <i data-lucide="zap" style="width:16px; height:16px;"></i>
-          <span>Deploy Guide</span>
-        </button>
-        <a href="https://github.com/fariha-shah/CodeAlpha_MLTasks" target="_blank" rel="noopener noreferrer" class="icon-btn" title="GitHub Repository">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+      <div class="nav-container">
+        <a href="#home" class="brand-group" data-target-section="home">
+          <div class="brand-logo-icon">α</div>
+          <div class="brand-text-col">
+            <span class="brand-title"
+              >CodeAlpha <span class="lime-highlight">ML Studio</span></span
+            >
+            <span class="brand-subtitle"
+              >Fareeha • Machine Learning Intern</span
+            >
+          </div>
         </a>
-        <button id="mobile-menu-btn" class="icon-btn mobile-menu-btn" aria-label="Open Mobile Menu">
-          <i data-lucide="menu" style="width:20px; height:20px;"></i>
+
+        <!-- Desktop Navigation Links -->
+        <nav>
+          <ul class="nav-links">
+            <li>
+              <a
+                href="#home"
+                class="nav-link active"
+                data-target-section="home"
+              >
+                <i
+                  data-lucide="layout-dashboard"
+                  style="width: 16px; height: 16px"
+                ></i>
+                <span>Hub</span>
+              </a>
+            </li>
+            <li>
+              <a href="#credit" class="nav-link" data-target-section="credit">
+                <i
+                  data-lucide="credit-card"
+                  style="width: 16px; height: 16px"
+                ></i>
+                <span>Credit Risk</span>
+              </a>
+            </li>
+            <li>
+              <a href="#emotion" class="nav-link" data-target-section="emotion">
+                <i data-lucide="mic" style="width: 16px; height: 16px"></i>
+                <span>Speech Emotion</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#handwriting"
+                class="nav-link"
+                data-target-section="handwriting"
+              >
+                <i data-lucide="pen-tool" style="width: 16px; height: 16px"></i>
+                <span>MNIST Canvas</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#benchmarks"
+                class="nav-link"
+                data-target-section="benchmarks"
+              >
+                <i
+                  data-lucide="bar-chart-2"
+                  style="width: 16px; height: 16px"
+                ></i>
+                <span>Benchmarks</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Action Buttons -->
+        <div class="nav-actions">
+          <button
+            id="theme-toggle-btn"
+            class="icon-btn"
+            title="Toggle Theme"
+            aria-label="Toggle Theme"
+          >
+            <i data-lucide="sun" style="width: 18px; height: 18px"></i>
+          </button>
+          <button
+            id="sound-toggle-btn"
+            class="icon-btn"
+            title="Toggle Sound Feedback"
+            aria-label="Toggle Sound"
+          >
+            <i data-lucide="volume-2" style="width: 18px; height: 18px"></i>
+          </button>
+
+          <a
+            href="https://github.com/fariha-shah/CodeAlpha_MLTasks"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="icon-btn"
+            title="GitHub Repository"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+              />
+            </svg>
+          </a>
+          <button
+            id="mobile-menu-btn"
+            class="icon-btn mobile-menu-btn"
+            aria-label="Open Mobile Menu"
+          >
+            <i data-lucide="menu" style="width: 20px; height: 20px"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Menu Drawer -->
+    <aside id="mobile-drawer" class="mobile-drawer">
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1.5rem;
+        "
+      >
+        <span
+          style="font-weight: 800; font-size: 1.15rem; color: var(--acid-lime)"
+          >Navigation</span
+        >
+        <button
+          id="mobile-drawer-close"
+          class="icon-btn"
+          aria-label="Close Menu"
+        >
+          <i data-lucide="x" style="width: 18px; height: 18px"></i>
         </button>
       </div>
-    </div>
-  </header>
+      <ul
+        style="
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        "
+      >
+        <li>
+          <a href="#home" class="nav-link active" data-target-section="home">
+            <i
+              data-lucide="layout-dashboard"
+              style="width: 16px; height: 16px"
+            ></i>
+            <span>Hub Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="#credit" class="nav-link" data-target-section="credit">
+            <i data-lucide="credit-card" style="width: 16px; height: 16px"></i>
+            <span>Credit Scoring</span>
+          </a>
+        </li>
+        <li>
+          <a href="#emotion" class="nav-link" data-target-section="emotion">
+            <i data-lucide="mic" style="width: 16px; height: 16px"></i>
+            <span>Speech Emotion</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#handwriting"
+            class="nav-link"
+            data-target-section="handwriting"
+          >
+            <i data-lucide="pen-tool" style="width: 16px; height: 16px"></i>
+            <span>Digit Canvas</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#benchmarks"
+            class="nav-link"
+            data-target-section="benchmarks"
+          >
+            <i data-lucide="bar-chart-2" style="width: 16px; height: 16px"></i>
+            <span>Benchmarks</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
 
-  <!-- Mobile Menu Drawer -->
-  <aside id="mobile-drawer" class="mobile-drawer">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
-      <span style="font-weight:800; font-size:1.15rem; color:var(--acid-lime);">Navigation</span>
-      <button id="mobile-drawer-close" class="icon-btn" aria-label="Close Menu">
-        <i data-lucide="x" style="width:18px; height:18px;"></i>
-      </button>
-    </div>
-    <ul style="list-style:none; display:flex; flex-direction:column; gap:0.5rem;">
-      <li>
-        <a href="#home" class="nav-link active" data-target-section="home">
-          <i data-lucide="layout-dashboard" style="width:16px; height:16px;"></i>
-          <span>Hub Overview</span>
-        </a>
-      </li>
-      <li>
-        <a href="#credit" class="nav-link" data-target-section="credit">
-          <i data-lucide="credit-card" style="width:16px; height:16px;"></i>
-          <span>Credit Scoring</span>
-        </a>
-      </li>
-      <li>
-        <a href="#emotion" class="nav-link" data-target-section="emotion">
-          <i data-lucide="mic" style="width:16px; height:16px;"></i>
-          <span>Speech Emotion</span>
-        </a>
-      </li>
-      <li>
-        <a href="#handwriting" class="nav-link" data-target-section="handwriting">
-          <i data-lucide="pen-tool" style="width:16px; height:16px;"></i>
-          <span>Digit Canvas</span>
-        </a>
-      </li>
-      <li>
-        <a href="#benchmarks" class="nav-link" data-target-section="benchmarks">
-          <i data-lucide="bar-chart-2" style="width:16px; height:16px;"></i>
-          <span>Benchmarks</span>
-        </a>
-      </li>
-      
-    </ul>
-  </aside>
-
-  <!-- Main Workspace -->
-  <main class="app-main">
-
-    <!-- ====================================================================
+    <!-- Main Workspace -->
+    <main class="app-main">
+      <!-- ====================================================================
          SECTION 1: OVERVIEW & HUB
          ==================================================================== -->
-    <section id="section-home" class="app-section active">
-      <div class="hero-banner">
-        <div class="hero-content">
-          <div class="hero-badge">
-            <span style="width:8px; height:8px; background:var(--acid-lime); border-radius:50%; box-shadow:0 0 8px var(--acid-lime-glow); display:inline-block;"></span>
-            CodeAlpha Machine Learning Internship Showcase
-          </div>
-          <h1 class="hero-title">
-            Human-Crafted AI &amp; <span class="cobalt-word">Machine Learning</span> <span class="lime-word">Studio Suite</span>
-          </h1>
-          <p class="hero-subtitle">
-            An artisan portfolio uniting three real-world machine learning models into one high-contrast, lightning-fast web experience. Built with native client-side vectorized neural network inference, pure Web Audio acoustic signal processing, and responsive canvas computer vision.
-          </p>
-          <div class="hero-actions">
-            <a href="#credit" class="btn-lime" data-target-section="credit">
-              <span>Launch Live Models</span>
-              <i data-lucide="arrow-right" style="width:18px; height:18px;"></i>
-            </a>
-           
-          </div>
-        </div>
-      </div>
-
-      <!-- 3 Project Cards Grid -->
-      <div class="projects-grid">
-        <!-- Task 1 Card -->
-        <div class="project-card">
-          <div class="card-top">
-            <div class="card-icon-badge" style="color:var(--acid-lime);">
-              <i data-lucide="credit-card" style="width:28px; height:28px;"></i>
+      <section id="section-home" class="app-section active">
+        <div class="hero-banner">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <span
+                style="
+                  width: 8px;
+                  height: 8px;
+                  background: var(--acid-lime);
+                  border-radius: 50%;
+                  box-shadow: 0 0 8px var(--acid-lime-glow);
+                  display: inline-block;
+                "
+              ></span>
+              CodeAlpha Machine Learning Internship Showcase
             </div>
-            <div class="card-task-num">Task 1 • Financial ML</div>
-            <h3 class="card-title">Credit Risk Scoring</h3>
-            <p class="card-desc">
-              100-Tree Random Forest classifier on German Credit data. Predicts applicant repayment risk, FICO-scale score (300–850), and debt amortization.
+            <h1 class="hero-title">
+              Human-Crafted AI &amp;
+              <span class="cobalt-word">Machine Learning</span>
+              <span class="lime-word">Studio Suite</span>
+            </h1>
+            <p class="hero-subtitle">
+              An artisan portfolio uniting three real-world machine learning
+              models into one high-contrast, lightning-fast web experience.
+              Built with native client-side vectorized neural network inference,
+              pure Web Audio acoustic signal processing, and responsive canvas
+              computer vision.
             </p>
-          </div>
-          <div>
-            <div class="card-metrics-row">
-              <div class="metric-item">
-                <span class="metric-label">Model</span>
-                <span class="metric-val cobalt-text">Random Forest</span>
-              </div>
-              <div class="metric-item">
-                <span class="metric-label">Accuracy</span>
-                <span class="metric-val acid-text">74.50%</span>
-              </div>
-              <div class="metric-item">
-                <span class="metric-label">ROC-AUC</span>
-                <span class="metric-val">0.753</span>
-              </div>
+            <div class="hero-actions">
+              <a href="#credit" class="btn-lime" data-target-section="credit">
+                <span>Launch Live Models</span>
+                <i
+                  data-lucide="arrow-right"
+                  style="width: 18px; height: 18px"
+                ></i>
+              </a>
+              <a href="#docs" class="btn-cobalt" data-target-section="docs">
+                <i
+                  data-lucide="file-text"
+                  style="width: 18px; height: 18px"
+                ></i>
+                <span>Developer &amp; Netlify Guide</span>
+              </a>
             </div>
-            <button class="card-cta-btn" data-target-section="credit">
-              <span>Launch Risk Calculator</span>
-              <i data-lucide="chevron-right" style="width:16px; height:16px;"></i>
-            </button>
           </div>
         </div>
 
-        <!-- Task 2 Card -->
-        <div class="project-card">
-          <div class="card-top">
-            <div class="card-icon-badge" style="color:var(--electric-cobalt-light);">
-              <i data-lucide="mic" style="width:28px; height:28px;"></i>
+        <!-- 3 Project Cards Grid -->
+        <div class="projects-grid">
+          <!-- Task 1 Card -->
+          <div class="project-card">
+            <div class="card-top">
+              <div class="card-icon-badge" style="color: var(--acid-lime)">
+                <i
+                  data-lucide="credit-card"
+                  style="width: 28px; height: 28px"
+                ></i>
+              </div>
+              <div class="card-task-num">Task 1 • Financial ML</div>
+              <h3 class="card-title">Credit Risk Scoring</h3>
+              <p class="card-desc">
+                100-Tree Random Forest classifier on German Credit data.
+                Predicts applicant repayment risk, FICO-scale score (300–850),
+                and debt amortization.
+              </p>
             </div>
-            <div class="card-task-num">Task 2 • Speech Audio ML</div>
-            <h3 class="card-title">Speech Emotion AI</h3>
-            <p class="card-desc">
-              Recognizes 8 human affective states from speech audio. Features real-time Web Audio API frequency analysis, live mic recording, and authentic RAVDESS clips.
-            </p>
+            <div>
+              <div class="card-metrics-row">
+                <div class="metric-item">
+                  <span class="metric-label">Model</span>
+                  <span class="metric-val cobalt-text">Random Forest</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-label">Accuracy</span>
+                  <span class="metric-val acid-text">74.50%</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-label">ROC-AUC</span>
+                  <span class="metric-val">0.753</span>
+                </div>
+              </div>
+              <button class="card-cta-btn" data-target-section="credit">
+                <span>Launch Risk Calculator</span>
+                <i
+                  data-lucide="chevron-right"
+                  style="width: 16px; height: 16px"
+                ></i>
+              </button>
+            </div>
           </div>
-          <div>
-            <div class="card-metrics-row">
-              <div class="metric-item">
-                <span class="metric-label">Model</span>
-                <span class="metric-val cobalt-text">MLP Neural Net</span>
+
+          <!-- Task 2 Card -->
+          <div class="project-card">
+            <div class="card-top">
+              <div
+                class="card-icon-badge"
+                style="color: var(--electric-cobalt-light)"
+              >
+                <i data-lucide="mic" style="width: 28px; height: 28px"></i>
               </div>
-              <div class="metric-item">
-                <span class="metric-label">Dataset</span>
-                <span class="metric-val">RAVDESS</span>
-              </div>
-              <div class="metric-item">
-                <span class="metric-label">Emotions</span>
-                <span class="metric-val acid-text">8 States</span>
-              </div>
+              <div class="card-task-num">Task 2 • Speech Audio ML</div>
+              <h3 class="card-title">Speech Emotion AI</h3>
+              <p class="card-desc">
+                Recognizes 8 human affective states from speech audio. Features
+                real-time Web Audio API frequency analysis, live mic recording,
+                and authentic RAVDESS clips.
+              </p>
             </div>
-            <button class="card-cta-btn" data-target-section="emotion">
-              <span>Open Voice Analyzer</span>
-              <i data-lucide="chevron-right" style="width:16px; height:16px;"></i>
-            </button>
+            <div>
+              <div class="card-metrics-row">
+                <div class="metric-item">
+                  <span class="metric-label">Model</span>
+                  <span class="metric-val cobalt-text">MLP Neural Net</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-label">Dataset</span>
+                  <span class="metric-val">RAVDESS</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-label">Emotions</span>
+                  <span class="metric-val acid-text">8 States</span>
+                </div>
+              </div>
+              <button class="card-cta-btn" data-target-section="emotion">
+                <span>Open Voice Analyzer</span>
+                <i
+                  data-lucide="chevron-right"
+                  style="width: 16px; height: 16px"
+                ></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Task 3 Card -->
+          <div class="project-card">
+            <div class="card-top">
+              <div class="card-icon-badge" style="color: var(--acid-lime)">
+                <i data-lucide="pen-tool" style="width: 28px; height: 28px"></i>
+              </div>
+              <div class="card-task-num">Task 3 • Computer Vision</div>
+              <h3 class="card-title">Handwritten Digit Recognition</h3>
+              <p class="card-desc">
+                Interactive 280×280 drawing canvas with true MNIST
+                Center-of-Mass preprocessing. Classifies any drawn digit (0–9)
+                in under 1 millisecond.
+              </p>
+            </div>
+            <div>
+              <div class="card-metrics-row">
+                <div class="metric-item">
+                  <span class="metric-label">Model</span>
+                  <span class="metric-val cobalt-text">784→256→128→10</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-label">Accuracy</span>
+                  <span class="metric-val acid-text">94.61%</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-label">Latency</span>
+                  <span class="metric-val">&lt; 1 ms</span>
+                </div>
+              </div>
+              <button class="card-cta-btn" data-target-section="handwriting">
+                <span>Open Drawing Studio</span>
+                <i
+                  data-lucide="chevron-right"
+                  style="width: 16px; height: 16px"
+                ></i>
+              </button>
+            </div>
           </div>
         </div>
+      </section>
 
-        <!-- Task 3 Card -->
-        <div class="project-card">
-          <div class="card-top">
-            <div class="card-icon-badge" style="color:var(--acid-lime);">
-              <i data-lucide="pen-tool" style="width:28px; height:28px;"></i>
-            </div>
-            <div class="card-task-num">Task 3 • Computer Vision</div>
-            <h3 class="card-title">Handwritten Digit Recognition</h3>
-            <p class="card-desc">
-              Interactive 280×280 drawing canvas with true MNIST Center-of-Mass preprocessing. Classifies any drawn digit (0–9) in under 1 millisecond.
-            </p>
-          </div>
-          <div>
-            <div class="card-metrics-row">
-              <div class="metric-item">
-                <span class="metric-label">Model</span>
-                <span class="metric-val cobalt-text">784→256→128→10</span>
-              </div>
-              <div class="metric-item">
-                <span class="metric-label">Accuracy</span>
-                <span class="metric-val acid-text">94.61%</span>
-              </div>
-              <div class="metric-item">
-                <span class="metric-label">Latency</span>
-                <span class="metric-val">&lt; 1 ms</span>
-              </div>
-            </div>
-            <button class="card-cta-btn" data-target-section="handwriting">
-              <span>Open Drawing Studio</span>
-              <i data-lucide="chevron-right" style="width:16px; height:16px;"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====================================================================
+      <!-- ====================================================================
          SECTION 2: TASK 1 — CREDIT SCORING MODEL
          ==================================================================== -->
-    <section id="section-credit" class="app-section">
-      <div class="section-header">
-        <span class="section-tag">Task 1 • Financial Risk AI</span>
-        <h2 class="section-title">Credit Scoring &amp; Risk Assessment</h2>
-        <p class="section-desc">
-          Evaluates bank loan applicants using an ensemble of 100 Random Forest decision trees trained on German Credit Data. Adjust parameters or select pre-calibrated applicant personas below.
-        </p>
-      </div>
+      <section id="section-credit" class="app-section">
+        <div class="section-header">
+          <span class="section-tag">Task 1 • Financial Risk AI</span>
+          <h2 class="section-title">Credit Scoring &amp; Risk Assessment</h2>
+          <p class="section-desc">
+            Evaluates bank loan applicants using an ensemble of 100 Random
+            Forest decision trees trained on German Credit Data. Adjust
+            parameters or select pre-calibrated applicant personas below.
+          </p>
+        </div>
 
-      <div class="app-two-col">
-        <!-- Form Inputs -->
-        <div class="glass-card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
-            <h3 style="font-size:1.15rem; font-weight:800;">Applicant Financial Credentials</h3>
-            <span style="font-size:0.75rem; color:var(--acid-lime); font-family:var(--font-mono); font-weight:700;">100 Trees</span>
+        <div class="app-two-col">
+          <!-- Form Inputs -->
+          <div class="glass-card">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 1rem;
+              "
+            >
+              <h3 style="font-size: 1.15rem; font-weight: 800">
+                Applicant Financial Credentials
+              </h3>
+              <span
+                style="
+                  font-size: 0.75rem;
+                  color: var(--acid-lime);
+                  font-family: var(--font-mono);
+                  font-weight: 700;
+                "
+                >100 Trees</span
+              >
+            </div>
+
+            <!-- Persona Presets -->
+            <div class="persona-presets-bar">
+              <span
+                style="
+                  font-size: 0.8rem;
+                  font-weight: 700;
+                  color: var(--text-muted);
+                "
+                >Quick Presets:</span
+              >
+              <button class="persona-btn active-preset" data-persona="low_risk">
+                Alice (Low Risk)
+              </button>
+              <button class="persona-btn" data-persona="high_risk">
+                Bob (High Risk)
+              </button>
+              <button class="persona-btn" data-persona="moderate_risk">
+                Carol (Moderate)
+              </button>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <div class="form-label">
+                  <span>Applicant Age</span>
+                  <span id="credit-age-val" class="form-value-disp"
+                    >46 yrs</span
+                  >
+                </div>
+                <input
+                  type="range"
+                  id="credit-age"
+                  class="range-slider"
+                  min="18"
+                  max="75"
+                  value="46"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="credit-sex">Gender (Sex)</label>
+                <select id="credit-sex" class="select-control">
+                  <option value="male" selected>Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <div class="form-label">
+                  <span>Loan Amount</span>
+                  <span id="credit-amount-val" class="form-value-disp"
+                    >€2,000</span
+                  >
+                </div>
+                <input
+                  type="range"
+                  id="credit-amount"
+                  class="range-slider"
+                  min="500"
+                  max="15000"
+                  step="100"
+                  value="2000"
+                />
+              </div>
+
+              <div class="form-group">
+                <div class="form-label">
+                  <span>Loan Duration</span>
+                  <span id="credit-duration-val" class="form-value-disp"
+                    >12 mo</span
+                  >
+                </div>
+                <input
+                  type="range"
+                  id="credit-duration"
+                  class="range-slider"
+                  min="4"
+                  max="72"
+                  step="2"
+                  value="12"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="credit-savings"
+                  >Saving Accounts</label
+                >
+                <select id="credit-savings" class="select-control">
+                  <option value="rich" selected>Rich (&gt;= 1000 DM)</option>
+                  <option value="quite rich">Quite Rich (500–1000 DM)</option>
+                  <option value="moderate">Moderate (100–500 DM)</option>
+                  <option value="little">Little (&lt; 100 DM)</option>
+                  <option value="unknown">Unknown / None</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="credit-checking"
+                  >Checking Account</label
+                >
+                <select id="credit-checking" class="select-control">
+                  <option value="rich" selected>Rich (&gt;= 200 DM)</option>
+                  <option value="moderate">Moderate (0–200 DM)</option>
+                  <option value="little">Little (&lt; 0 DM / Overdraft)</option>
+                  <option value="unknown">Unknown / None</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="credit-job"
+                  >Job Skill Level</label
+                >
+                <select id="credit-job" class="select-control">
+                  <option value="3">Highly Skilled / Executive</option>
+                  <option value="2" selected>
+                    Skilled Employee / Official
+                  </option>
+                  <option value="1">Unskilled Resident</option>
+                  <option value="0">Unskilled Non-Resident</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="credit-housing"
+                  >Housing Status</label
+                >
+                <select id="credit-housing" class="select-control">
+                  <option value="own" selected>Own House</option>
+                  <option value="rent">Renting</option>
+                  <option value="free">Free Housing</option>
+                </select>
+              </div>
+
+              <div class="form-group form-group-full">
+                <label class="form-label" for="credit-purpose"
+                  >Loan Purpose</label
+                >
+                <select id="credit-purpose" class="select-control">
+                  <option value="car" selected>Automobile (Car)</option>
+                  <option value="furniture/equipment">
+                    Furniture &amp; Equipment
+                  </option>
+                  <option value="radio/TV">Radio / Television</option>
+                  <option value="domestic appliances">
+                    Domestic Appliances
+                  </option>
+                  <option value="repairs">Home Repairs</option>
+                  <option value="education">Education</option>
+                  <option value="business">Business Venture</option>
+                  <option value="vacation/others">Vacation &amp; Others</option>
+                </select>
+              </div>
+            </div>
+
+            <button
+              id="credit-evaluate-btn"
+              class="btn-lime"
+              style="
+                width: 100%;
+                margin-top: 1.5rem;
+                justify-content: center;
+                padding: 0.85rem;
+              "
+            >
+              <i
+                data-lucide="check-circle-2"
+                style="width: 18px; height: 18px"
+              ></i>
+              <span>Evaluate Credit Risk</span>
+            </button>
           </div>
 
-          <!-- Persona Presets -->
-          <div class="persona-presets-bar">
-            <span style="font-size:0.8rem; font-weight:700; color:var(--text-muted);">Quick Presets:</span>
-            <button class="persona-btn active-preset" data-persona="low_risk">Alice (Low Risk)</button>
-            <button class="persona-btn" data-persona="high_risk">Bob (High Risk)</button>
-            <button class="persona-btn" data-persona="moderate_risk">Carol (Moderate)</button>
+          <!-- Evaluation Output -->
+          <div class="glass-card">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 1.25rem;
+              "
+            >
+              <h3 style="font-size: 1.15rem; font-weight: 800">
+                Risk Intelligence Assessment
+              </h3>
+              <button
+                id="credit-export-btn"
+                class="tool-btn"
+                title="Download report"
+              >
+                <i data-lucide="download" style="width: 14px; height: 14px"></i>
+                <span>Export</span>
+              </button>
+            </div>
+
+            <!-- SVG Radial Gauge -->
+            <div class="gauge-wrapper">
+              <div class="gauge-svg-container">
+                <svg class="gauge-svg" viewBox="0 0 200 110">
+                  <path class="gauge-bg" d="M 20 100 A 80 80 0 0 1 180 100" />
+                  <path
+                    id="credit-gauge-fill"
+                    class="gauge-fill"
+                    d="M 20 100 A 80 80 0 0 1 180 100"
+                  />
+                </svg>
+                <div class="gauge-center-val">
+                  <div id="credit-score-number" class="gauge-score-number">
+                    765
+                  </div>
+                  <div class="gauge-score-label">
+                    FICO-Scale Score (300–850)
+                  </div>
+                </div>
+              </div>
+              <div id="credit-risk-badge" class="risk-badge risk-good">
+                PRIME / LOW RISK (APPROVED)
+              </div>
+            </div>
+
+            <!-- Probability Split Bar -->
+            <div class="prob-group">
+              <div class="prob-legend">
+                <span class="acid-text"
+                  >Good Credit:
+                  <strong id="credit-prob-good">84.5%</strong></span
+                >
+                <span style="color: #ff3344"
+                  >Bad Risk: <strong id="credit-prob-bad">15.5%</strong></span
+                >
+              </div>
+              <div class="prob-split-bar">
+                <div
+                  id="credit-prob-bar-good"
+                  class="prob-part-good"
+                  style="width: 84.5%"
+                ></div>
+                <div
+                  id="credit-prob-bar-bad"
+                  class="prob-part-bad"
+                  style="width: 15.5%"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Amortization Grid -->
+            <div class="loan-calc-grid">
+              <div class="loan-stat-box">
+                <div class="loan-stat-label">Monthly Payment</div>
+                <div id="loan-monthly-installment" class="loan-stat-val">
+                  €172/mo
+                </div>
+              </div>
+              <div class="loan-stat-box">
+                <div class="loan-stat-label">Total Repayment</div>
+                <div id="loan-total-repayment" class="loan-stat-val">
+                  €2,064
+                </div>
+              </div>
+              <div class="loan-stat-box">
+                <div class="loan-stat-label">Est. Interest</div>
+                <div id="loan-interest-est" class="loan-stat-val">€64</div>
+              </div>
+              <div class="loan-stat-box">
+                <div class="loan-stat-label">Risk APR</div>
+                <div id="loan-est-apr" class="loan-stat-val acid-text">
+                  5.9%
+                </div>
+              </div>
+            </div>
+
+            <!-- Decision Factors -->
+            <h4
+              style="
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                margin-top: 1.25rem;
+              "
+            >
+              Key Influencing Factors:
+            </h4>
+            <ul id="credit-factors-list" class="factors-list"></ul>
+
+            <!-- AI Underwriter -->
+            <div
+              style="
+                background: var(--midnight-surface);
+                padding: 0.95rem;
+                border-radius: var(--radius-sm);
+                border-left: 3px solid var(--acid-lime);
+                margin-top: 1rem;
+              "
+            >
+              <div
+                style="
+                  font-size: 0.75rem;
+                  text-transform: uppercase;
+                  font-weight: 800;
+                  color: var(--acid-lime);
+                  margin-bottom: 0.25rem;
+                "
+              >
+                AI Underwriter Advice
+              </div>
+              <p
+                id="credit-ai-advice"
+                style="font-size: 0.85rem; color: var(--text-secondary)"
+              ></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+         SECTION 3: TASK 2 — SPEECH EMOTION RECOGNITION
+         ==================================================================== -->
+      <section id="section-emotion" class="app-section">
+        <div class="section-header">
+          <span class="section-tag">Task 2 • Speech Emotion AI</span>
+          <h2 class="section-title">Acoustic Speech Emotion Recognition</h2>
+          <p class="section-desc">
+            Classifies speech recordings into 8 affective emotional states using
+            acoustic signal processing and Deep MLP neural inference. Click
+            verified actor samples, record your voice, or upload custom audio.
+          </p>
+        </div>
+
+        <div class="emotion-layout">
+          <!-- Controls -->
+          <div class="glass-card">
+            <div class="mode-tabs-bar">
+              <button class="mode-tab active" data-emotion-mode="presets">
+                Verified Samples (1-Click)
+              </button>
+              <button class="mode-tab" data-emotion-mode="mic">
+                Microphone Live
+              </button>
+              <button class="mode-tab" data-emotion-mode="upload">
+                Upload .WAV/.MP3
+              </button>
+            </div>
+
+            <!-- Presets -->
+            <div id="emotion-panel-presets">
+              <p
+                style="
+                  font-size: 0.85rem;
+                  color: var(--text-secondary);
+                  margin-bottom: 0.75rem;
+                "
+              >
+                Click any verified RAVDESS audio sample to test playback and
+                trigger acoustic classification:
+              </p>
+              <div id="emotion-samples-grid" class="samples-grid"></div>
+            </div>
+
+            <!-- Mic -->
+            <div
+              id="emotion-panel-mic"
+              style="display: none; padding: 1.5rem 0"
+            >
+              <button id="emotion-record-btn" class="rec-button">
+                <i data-lucide="mic" style="width: 20px; height: 20px"></i>
+                <span>Start 3s Voice Recording</span>
+              </button>
+              <p
+                style="
+                  font-size: 0.8rem;
+                  color: var(--text-muted);
+                  text-align: center;
+                  margin-top: 0.75rem;
+                "
+              >
+                Speak with clear emotion (happy exclamation, angry shout, calm
+                whisper, etc.).
+              </p>
+            </div>
+
+            <!-- Upload -->
+            <div
+              id="emotion-panel-upload"
+              style="display: none; padding: 1rem 0"
+            >
+              <div id="emotion-upload-zone" class="upload-dropzone">
+                <input
+                  type="file"
+                  id="emotion-file-input"
+                  accept="audio/*"
+                  style="display: none"
+                />
+                <i
+                  data-lucide="upload-cloud"
+                  style="
+                    width: 36px;
+                    height: 36px;
+                    color: var(--acid-lime);
+                    margin-bottom: 0.5rem;
+                  "
+                ></i>
+                <div
+                  style="
+                    font-weight: 700;
+                    font-size: 0.95rem;
+                    margin-bottom: 0.25rem;
+                  "
+                >
+                  Drop audio file here or click to browse
+                </div>
+                <div style="font-size: 0.8rem; color: var(--text-muted)">
+                  Supports .wav, .mp3, .ogg, .m4a
+                </div>
+              </div>
+            </div>
+
+            <!-- 60 FPS Visualizer -->
+            <div class="visualizer-box">
+              <canvas
+                id="emotion-visualizer-canvas"
+                class="visualizer-canvas"
+              ></canvas>
+              <div class="audio-track-info">
+                <span
+                  id="emotion-current-track"
+                  style="
+                    font-weight: 700;
+                    font-family: var(--font-mono);
+                    color: var(--acid-lime);
+                  "
+                  >No audio selected</span
+                >
+                <span style="font-family: var(--font-mono); opacity: 0.7"
+                  >44.1 kHz • PCM</span
+                >
+              </div>
+              <div class="audio-progress-bar">
+                <div
+                  id="emotion-audio-progress"
+                  class="audio-progress-fill"
+                ></div>
+              </div>
+            </div>
+
+            <div class="audio-controls-row">
+              <button id="emotion-play-btn" class="tool-btn">
+                <i data-lucide="play" style="width: 18px; height: 18px"></i>
+                <span>Play Audio</span>
+              </button>
+              <span style="font-size: 0.8rem; color: var(--text-muted)">
+                Acoustic Energy &amp; Formant Analysis
+              </span>
+            </div>
           </div>
 
-          <div class="form-grid">
-            <div class="form-group">
-              <div class="form-label">
-                <span>Applicant Age</span>
-                <span id="credit-age-val" class="form-value-disp">46 yrs</span>
+          <!-- Emotion Atmosphere Display -->
+          <div class="glass-card" id="emotion-aura-card">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 1.25rem;
+              "
+            >
+              <h3 style="font-size: 1.15rem; font-weight: 800">
+                Affective Classification
+              </h3>
+              <span
+                id="emotion-result-badge"
+                class="risk-badge risk-good"
+                style="margin-top: 0"
+                >READY</span
+              >
+            </div>
+
+            <div class="emotion-hero-card">
+              <div id="emotion-hero-icon" class="hero-icon-display">
+                <i
+                  data-lucide="smile"
+                  style="width: 52px; height: 52px; color: var(--acid-lime)"
+                ></i>
               </div>
-              <input type="range" id="credit-age" class="range-slider" min="18" max="75" value="46" />
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="credit-sex">Gender (Sex)</label>
-              <select id="credit-sex" class="select-control">
-                <option value="male" selected>Male</option>
-                <option value="female">Female</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <div class="form-label">
-                <span>Loan Amount</span>
-                <span id="credit-amount-val" class="form-value-disp">€2,000</span>
+              <div id="emotion-hero-title" class="hero-emotion-name">HAPPY</div>
+              <div id="emotion-hero-conf" class="hero-emotion-conf">
+                62.4% Model Confidence
               </div>
-              <input type="range" id="credit-amount" class="range-slider" min="500" max="15000" step="100" value="2000" />
             </div>
 
-            <div class="form-group">
-              <div class="form-label">
-                <span>Loan Duration</span>
-                <span id="credit-duration-val" class="form-value-disp">12 mo</span>
+            <h4
+              style="
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                margin-bottom: 0.75rem;
+              "
+            >
+              Confidence Across 8 Emotions:
+            </h4>
+            <div id="emotion-prob-bars" class="prob-rows-container"></div>
+
+            <div
+              style="
+                background: var(--midnight-surface);
+                padding: 0.95rem;
+                border-radius: var(--radius-sm);
+                margin-top: 1.25rem;
+                border-left: 3px solid var(--electric-cobalt);
+              "
+            >
+              <div
+                style="
+                  font-size: 0.75rem;
+                  text-transform: uppercase;
+                  font-weight: 800;
+                  color: var(--electric-cobalt-light);
+                  margin-bottom: 0.25rem;
+                "
+              >
+                Acoustic Signature Telemetry
               </div>
-              <input type="range" id="credit-duration" class="range-slider" min="4" max="72" step="2" value="12" />
+              <p
+                id="emotion-acoustic-desc"
+                style="
+                  font-size: 0.82rem;
+                  color: var(--text-secondary);
+                  line-height: 1.5;
+                "
+              >
+                Acoustic feature analysis extracted via Mel-frequency filterbank
+                representation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+         SECTION 4: TASK 3 — HANDWRITTEN DIGIT RECOGNITION
+         ==================================================================== -->
+      <section id="section-handwriting" class="app-section">
+        <div class="section-header">
+          <span class="section-tag">Task 3 • Computer Vision AI</span>
+          <h2 class="section-title">Handwritten Digit Recognition</h2>
+          <p class="section-desc">
+            Interactive drawing studio with authentic MNIST Center-of-Mass
+            normalization. Draw any number from 0 to 9 with touch or mouse, or
+            test authentic MNIST digit samples.
+          </p>
+        </div>
+
+        <div class="handwriting-layout">
+          <!-- Canvas Studio -->
+          <div class="glass-card">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 1rem;
+              "
+            >
+              <h3 style="font-size: 1.15rem; font-weight: 800">
+                Interactive Drawing Studio
+              </h3>
+              <span
+                style="
+                  font-size: 0.75rem;
+                  color: var(--acid-lime);
+                  font-family: var(--font-mono);
+                  font-weight: 800;
+                "
+                >CoM Normalized</span
+              >
             </div>
 
-            <div class="form-group">
-              <label class="form-label" for="credit-savings">Saving Accounts</label>
-              <select id="credit-savings" class="select-control">
-                <option value="rich" selected>Rich (&gt;= 1000 DM)</option>
-                <option value="quite rich">Quite Rich (500–1000 DM)</option>
-                <option value="moderate">Moderate (100–500 DM)</option>
-                <option value="little">Little (&lt; 100 DM)</option>
-                <option value="unknown">Unknown / None</option>
-              </select>
+            <div class="canvas-holder">
+              <canvas
+                id="digit-drawing-canvas"
+                class="drawing-canvas"
+                width="280"
+                height="280"
+              ></canvas>
+
+              <div class="canvas-toolbar">
+                <button
+                  id="digit-predict-now-btn"
+                  class="tool-btn"
+                  style="
+                    background: var(--acid-lime);
+                    color: var(--acid-lime-text);
+                    border-color: var(--acid-lime);
+                  "
+                >
+                  <i data-lucide="play" style="width: 14px; height: 14px"></i>
+                  <span>Predict</span>
+                </button>
+                <button
+                  id="digit-clear-btn"
+                  class="tool-btn"
+                  title="Clear Canvas"
+                >
+                  <i
+                    data-lucide="trash-2"
+                    style="width: 14px; height: 14px"
+                  ></i>
+                  <span>Clear</span>
+                </button>
+                <button
+                  id="digit-undo-btn"
+                  class="tool-btn"
+                  title="Undo Stroke"
+                >
+                  <i data-lucide="undo-2" style="width: 14px; height: 14px"></i>
+                  <span>Undo</span>
+                </button>
+                <button id="digit-eraser-btn" class="tool-btn" title="Eraser">
+                  <i data-lucide="eraser" style="width: 14px; height: 14px"></i>
+                  <span>Eraser</span>
+                </button>
+                <button
+                  id="digit-upload-btn"
+                  class="tool-btn"
+                  title="Upload Image"
+                >
+                  <i data-lucide="upload" style="width: 14px; height: 14px"></i>
+                  <span>Upload</span>
+                </button>
+                <input
+                  type="file"
+                  id="digit-file-input"
+                  accept="image/*"
+                  style="display: none"
+                />
+              </div>
+
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 0.75rem;
+                  margin-top: 1rem;
+                  width: 100%;
+                  max-width: 280px;
+                "
+              >
+                <span
+                  style="
+                    font-size: 0.75rem;
+                    color: var(--text-muted);
+                    text-transform: uppercase;
+                    font-weight: 700;
+                  "
+                  >Brush</span
+                >
+                <input
+                  type="range"
+                  id="digit-brush-size"
+                  class="range-slider"
+                  min="12"
+                  max="36"
+                  value="24"
+                />
+                <span
+                  id="digit-brush-val"
+                  style="
+                    font-family: var(--font-mono);
+                    font-size: 0.8rem;
+                    font-weight: 800;
+                    color: var(--acid-lime);
+                  "
+                  >24px</span
+                >
+              </div>
             </div>
 
-            <div class="form-group">
-              <label class="form-label" for="credit-checking">Checking Account</label>
-              <select id="credit-checking" class="select-control">
-                <option value="rich" selected>Rich (&gt;= 200 DM)</option>
-                <option value="moderate">Moderate (0–200 DM)</option>
-                <option value="little">Little (&lt; 0 DM / Overdraft)</option>
-                <option value="unknown">Unknown / None</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="credit-job">Job Skill Level</label>
-              <select id="credit-job" class="select-control">
-                <option value="3">Highly Skilled / Executive</option>
-                <option value="2" selected>Skilled Employee / Official</option>
-                <option value="1">Unskilled Resident</option>
-                <option value="0">Unskilled Non-Resident</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="credit-housing">Housing Status</label>
-              <select id="credit-housing" class="select-control">
-                <option value="own" selected>Own House</option>
-                <option value="rent">Renting</option>
-                <option value="free">Free Housing</option>
-              </select>
-            </div>
-
-            <div class="form-group form-group-full">
-              <label class="form-label" for="credit-purpose">Loan Purpose</label>
-              <select id="credit-purpose" class="select-control">
-                <option value="car" selected>Automobile (Car)</option>
-                <option value="furniture/equipment">Furniture &amp; Equipment</option>
-                <option value="radio/TV">Radio / Television</option>
-                <option value="domestic appliances">Domestic Appliances</option>
-                <option value="repairs">Home Repairs</option>
-                <option value="education">Education</option>
-                <option value="business">Business Venture</option>
-                <option value="vacation/others">Vacation &amp; Others</option>
-              </select>
+            <!-- Presets -->
+            <div style="margin-top: 1.5rem">
+              <div
+                style="
+                  font-size: 0.8rem;
+                  font-weight: 700;
+                  color: var(--text-muted);
+                  text-align: center;
+                  margin-bottom: 0.5rem;
+                "
+              >
+                Or test an authentic MNIST test sample (0–9):
+              </div>
+              <div class="digits-row-bar">
+                <button class="digit-chip-btn" data-sample-digit="0">0</button>
+                <button class="digit-chip-btn" data-sample-digit="1">1</button>
+                <button class="digit-chip-btn" data-sample-digit="2">2</button>
+                <button class="digit-chip-btn active" data-sample-digit="3">
+                  3
+                </button>
+                <button class="digit-chip-btn" data-sample-digit="4">4</button>
+                <button class="digit-chip-btn" data-sample-digit="5">5</button>
+                <button class="digit-chip-btn" data-sample-digit="6">6</button>
+                <button class="digit-chip-btn" data-sample-digit="7">7</button>
+                <button class="digit-chip-btn" data-sample-digit="8">8</button>
+                <button class="digit-chip-btn" data-sample-digit="9">9</button>
+              </div>
             </div>
           </div>
 
-          <button id="credit-evaluate-btn" class="btn-lime" style="width:100%; margin-top:1.5rem; justify-content:center; padding:0.85rem;">
-            <i data-lucide="check-circle-2" style="width:18px; height:18px;"></i>
-            <span>Evaluate Credit Risk</span>
+          <!-- Output Hero -->
+          <div class="glass-card">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 1.25rem;
+              "
+            >
+              <h3 style="font-size: 1.15rem; font-weight: 800">
+                Neural Network Inference
+              </h3>
+              <span
+                style="
+                  font-size: 0.75rem;
+                  color: var(--acid-lime);
+                  font-family: var(--font-mono);
+                  font-weight: 800;
+                "
+                >94.61% Acc</span
+              >
+            </div>
+
+            <div class="digit-result-hero">
+              <div id="digit-predicted-hero" class="digit-big-box">3</div>
+              <div class="digit-meta-col">
+                <span class="digit-output-title">Predicted Digit</span>
+                <span
+                  id="digit-predicted-conf"
+                  class="digit-conf-label acid-text"
+                  >100.0% Confidence</span
+                >
+                <span id="digit-latency-val" class="digit-latency-tag"
+                  >Inference: 0.6 ms</span
+                >
+              </div>
+            </div>
+
+            <!-- Normalized 28x28 Preview -->
+            <div class="preview-28-wrapper">
+              <canvas
+                id="digit-preview-28"
+                class="canvas-28"
+                width="84"
+                height="84"
+              ></canvas>
+              <div>
+                <div
+                  style="
+                    font-size: 0.85rem;
+                    font-weight: 800;
+                    color: var(--text-primary);
+                  "
+                >
+                  28 × 28 CoM Normalized Grid
+                </div>
+                <div style="font-size: 0.75rem; color: var(--text-muted)">
+                  Digit cropped to 20×20 and centered by Center of Mass (CoM) to
+                  match authentic MNIST training.
+                </div>
+              </div>
+            </div>
+
+            <h4
+              style="
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                margin-bottom: 0.75rem;
+              "
+            >
+              10-Digit Probability Distribution:
+            </h4>
+            <div id="digit-prob-bars"></div>
+
+            <div
+              style="
+                background: var(--midnight-surface);
+                padding: 0.85rem;
+                border-radius: var(--radius-sm);
+                margin-top: 1.25rem;
+                font-size: 0.8rem;
+                border-left: 3px solid var(--electric-cobalt);
+              "
+            >
+              <div
+                style="
+                  font-weight: 800;
+                  color: var(--electric-cobalt-light);
+                  margin-bottom: 0.25rem;
+                "
+              >
+                Neural Architecture:
+              </div>
+              <div
+                style="
+                  color: var(--text-secondary);
+                  font-family: var(--font-mono);
+                "
+              >
+                Input (784) ➔ Dense (256, ReLU) ➔ Dense (128, ReLU) ➔ Output
+                (10, Softmax)
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+         SECTION 5: BENCHMARKS & MODEL COMPARISONS
+         ==================================================================== -->
+      <section id="section-benchmarks" class="app-section">
+        <div class="section-header">
+          <span class="section-tag">Performance Analytics</span>
+          <h2 class="section-title">
+            Model Benchmarks &amp; Comparative Evaluation
+          </h2>
+          <p class="section-desc">
+            Systematic performance evaluation across all classification
+            algorithms evaluated during the internship across Credit Risk,
+            Speech Emotion, and Handwritten Digit Recognition.
+          </p>
+        </div>
+
+        <div class="persona-presets-bar">
+          <span
+            style="
+              font-size: 0.8rem;
+              font-weight: 700;
+              color: var(--text-muted);
+            "
+            >Filter Task:</span
+          >
+          <button class="persona-btn active-preset" data-bench-filter="all">
+            All Models
+          </button>
+          <button class="persona-btn" data-bench-filter="credit">
+            Task 1: Credit Scoring
+          </button>
+          <button class="persona-btn" data-bench-filter="emotion">
+            Task 2: Speech Emotion
+          </button>
+          <button class="persona-btn" data-bench-filter="handwriting">
+            Task 3: Handwritten Digits
           </button>
         </div>
 
-        <!-- Evaluation Output -->
-        <div class="glass-card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
-            <h3 style="font-size:1.15rem; font-weight:800;">Risk Intelligence Assessment</h3>
-            <button id="credit-export-btn" class="tool-btn" title="Download report">
-              <i data-lucide="download" style="width:14px; height:14px;"></i>
-              <span>Export</span>
-            </button>
-          </div>
-
-          <!-- SVG Radial Gauge -->
-          <div class="gauge-wrapper">
-            <div class="gauge-svg-container">
-              <svg class="gauge-svg" viewBox="0 0 200 110">
-                <path class="gauge-bg" d="M 20 100 A 80 80 0 0 1 180 100" />
-                <path id="credit-gauge-fill" class="gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100" />
-              </svg>
-              <div class="gauge-center-val">
-                <div id="credit-score-number" class="gauge-score-number">765</div>
-                <div class="gauge-score-label">FICO-Scale Score (300–850)</div>
-              </div>
-            </div>
-            <div id="credit-risk-badge" class="risk-badge risk-good">PRIME / LOW RISK (APPROVED)</div>
-          </div>
-
-          <!-- Probability Split Bar -->
-          <div class="prob-group">
-            <div class="prob-legend">
-              <span class="acid-text">Good Credit: <strong id="credit-prob-good">84.5%</strong></span>
-              <span style="color:#ff3344;">Bad Risk: <strong id="credit-prob-bad">15.5%</strong></span>
-            </div>
-            <div class="prob-split-bar">
-              <div id="credit-prob-bar-good" class="prob-part-good" style="width: 84.5%;"></div>
-              <div id="credit-prob-bar-bad" class="prob-part-bad" style="width: 15.5%;"></div>
-            </div>
-          </div>
-
-          <!-- Amortization Grid -->
-          <div class="loan-calc-grid">
-            <div class="loan-stat-box">
-              <div class="loan-stat-label">Monthly Payment</div>
-              <div id="loan-monthly-installment" class="loan-stat-val">€172/mo</div>
-            </div>
-            <div class="loan-stat-box">
-              <div class="loan-stat-label">Total Repayment</div>
-              <div id="loan-total-repayment" class="loan-stat-val">€2,064</div>
-            </div>
-            <div class="loan-stat-box">
-              <div class="loan-stat-label">Est. Interest</div>
-              <div id="loan-interest-est" class="loan-stat-val">€64</div>
-            </div>
-            <div class="loan-stat-box">
-              <div class="loan-stat-label">Risk APR</div>
-              <div id="loan-est-apr" class="loan-stat-val acid-text">5.9%</div>
-            </div>
-          </div>
-
-          <!-- Decision Factors -->
-          <h4 style="font-size:0.85rem; text-transform:uppercase; color:var(--text-muted); margin-top:1.25rem;">Key Influencing Factors:</h4>
-          <ul id="credit-factors-list" class="factors-list"></ul>
-
-          <!-- AI Underwriter -->
-          <div style="background:var(--midnight-surface); padding:0.95rem; border-radius:var(--radius-sm); border-left:3px solid var(--acid-lime); margin-top:1rem;">
-            <div style="font-size:0.75rem; text-transform:uppercase; font-weight:800; color:var(--acid-lime); margin-bottom:0.25rem;">AI Underwriter Advice</div>
-            <p id="credit-ai-advice" style="font-size:0.85rem; color:var(--text-secondary);"></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         SECTION 3: TASK 2 — SPEECH EMOTION RECOGNITION
-         ==================================================================== -->
-    <section id="section-emotion" class="app-section">
-      <div class="section-header">
-        <span class="section-tag">Task 2 • Speech Emotion AI</span>
-        <h2 class="section-title">Acoustic Speech Emotion Recognition</h2>
-        <p class="section-desc">
-          Classifies speech recordings into 8 affective emotional states using acoustic signal processing and Deep MLP neural inference. Click verified actor samples, record your voice, or upload custom audio.
-        </p>
-      </div>
-
-      <div class="emotion-layout">
-        <!-- Controls -->
-        <div class="glass-card">
-          <div class="mode-tabs-bar">
-            <button class="mode-tab active" data-emotion-mode="presets">Verified Samples (1-Click)</button>
-            <button class="mode-tab" data-emotion-mode="mic">Microphone Live</button>
-            <button class="mode-tab" data-emotion-mode="upload">Upload .WAV/.MP3</button>
-          </div>
-
-          <!-- Presets -->
-          <div id="emotion-panel-presets">
-            <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:0.75rem;">
-              Click any verified RAVDESS audio sample to test playback and trigger acoustic classification:
-            </p>
-            <div id="emotion-samples-grid" class="samples-grid"></div>
-          </div>
-
-          <!-- Mic -->
-          <div id="emotion-panel-mic" style="display:none; padding:1.5rem 0;">
-            <button id="emotion-record-btn" class="rec-button">
-              <i data-lucide="mic" style="width:20px; height:20px;"></i>
-              <span>Start 3s Voice Recording</span>
-            </button>
-            <p style="font-size:0.8rem; color:var(--text-muted); text-align:center; margin-top:0.75rem;">
-              Speak with clear emotion (happy exclamation, angry shout, calm whisper, etc.).
-            </p>
-          </div>
-
-          <!-- Upload -->
-          <div id="emotion-panel-upload" style="display:none; padding:1rem 0;">
-            <div id="emotion-upload-zone" class="upload-dropzone">
-              <input type="file" id="emotion-file-input" accept="audio/*" style="display:none;" />
-              <i data-lucide="upload-cloud" style="width:36px; height:36px; color:var(--acid-lime); margin-bottom:0.5rem;"></i>
-              <div style="font-weight:700; font-size:0.95rem; margin-bottom:0.25rem;">Drop audio file here or click to browse</div>
-              <div style="font-size:0.8rem; color:var(--text-muted);">Supports .wav, .mp3, .ogg, .m4a</div>
-            </div>
-          </div>
-
-          <!-- 60 FPS Visualizer -->
-          <div class="visualizer-box">
-            <canvas id="emotion-visualizer-canvas" class="visualizer-canvas"></canvas>
-            <div class="audio-track-info">
-              <span id="emotion-current-track" style="font-weight:700; font-family:var(--font-mono); color:var(--acid-lime);">No audio selected</span>
-              <span style="font-family:var(--font-mono); opacity:0.7;">44.1 kHz • PCM</span>
-            </div>
-            <div class="audio-progress-bar">
-              <div id="emotion-audio-progress" class="audio-progress-fill"></div>
-            </div>
-          </div>
-
-          <div class="audio-controls-row">
-            <button id="emotion-play-btn" class="tool-btn">
-              <i data-lucide="play" style="width:18px; height:18px;"></i>
-              <span>Play Audio</span>
-            </button>
-            <span style="font-size:0.8rem; color:var(--text-muted);">
-              Acoustic Energy &amp; Formant Analysis
-            </span>
-          </div>
+        <div class="benchmark-table-wrapper">
+          <table id="benchmark-table" class="benchmark-table">
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Algorithm</th>
+                <th>Dataset</th>
+                <th>Accuracy</th>
+                <th>ROC-AUC / F1</th>
+                <th>Selection</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-category="credit">
+                <td><strong>Task 1: Credit Scoring</strong></td>
+                <td>Random Forest (100 Trees)</td>
+                <td>German Credit (1000)</td>
+                <td><strong class="acid-text">74.50%</strong></td>
+                <td>0.753</td>
+                <td>
+                  <span class="pill-winner">
+                    <i
+                      data-lucide="award"
+                      style="
+                        width: 13px;
+                        height: 13px;
+                        vertical-align: middle;
+                        margin-right: 3px;
+                      "
+                    ></i>
+                    Selected Best
+                  </span>
+                </td>
+              </tr>
+              <tr data-category="credit">
+                <td>Task 1: Credit Scoring</td>
+                <td>Logistic Regression</td>
+                <td>German Credit (1000)</td>
+                <td>74.50%</td>
+                <td>0.763</td>
+                <td><span style="color: var(--text-muted)">Baseline</span></td>
+              </tr>
+              <tr data-category="credit">
+                <td>Task 1: Credit Scoring</td>
+                <td>Decision Tree</td>
+                <td>German Credit (1000)</td>
+                <td>67.50%</td>
+                <td>0.596</td>
+                <td><span style="color: #ff3344">Overfit</span></td>
+              </tr>
+              <tr data-category="emotion">
+                <td><strong>Task 2: Speech Emotion</strong></td>
+                <td>MLP Neural Network (256-128)</td>
+                <td>RAVDESS (1440 audio)</td>
+                <td><strong class="acid-text">60.42%</strong></td>
+                <td>Angry (0.81 F1)</td>
+                <td>
+                  <span class="pill-winner">
+                    <i
+                      data-lucide="award"
+                      style="
+                        width: 13px;
+                        height: 13px;
+                        vertical-align: middle;
+                        margin-right: 3px;
+                      "
+                    ></i>
+                    Selected Best
+                  </span>
+                </td>
+              </tr>
+              <tr data-category="emotion">
+                <td>Task 2: Speech Emotion</td>
+                <td>Random Forest (200 Trees)</td>
+                <td>RAVDESS (1440 audio)</td>
+                <td>60.42%</td>
+                <td>0.60 F1</td>
+                <td>
+                  <span style="color: var(--text-muted)">Comparable</span>
+                </td>
+              </tr>
+              <tr data-category="handwriting">
+                <td><strong>Task 3: Handwritten Digits</strong></td>
+                <td>MLP Neural Network (256-128)</td>
+                <td>MNIST (70,000)</td>
+                <td><strong class="acid-text">94.61%</strong></td>
+                <td>0.95 Macro F1</td>
+                <td>
+                  <span class="pill-winner">
+                    <i
+                      data-lucide="award"
+                      style="
+                        width: 13px;
+                        height: 13px;
+                        vertical-align: middle;
+                        margin-right: 3px;
+                      "
+                    ></i>
+                    Selected Best
+                  </span>
+                </td>
+              </tr>
+              <tr data-category="handwriting">
+                <td>Task 3: Handwritten Digits</td>
+                <td>Random Forest (100 Trees)</td>
+                <td>MNIST (70,000)</td>
+                <td>94.46%</td>
+                <td>0.94 Macro F1</td>
+                <td><span style="color: var(--text-muted)">Runner Up</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <!-- Emotion Atmosphere Display -->
-        <div class="glass-card" id="emotion-aura-card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
-            <h3 style="font-size:1.15rem; font-weight:800;">Affective Classification</h3>
-            <span id="emotion-result-badge" class="risk-badge risk-good" style="margin-top:0;">READY</span>
-          </div>
-
-          <div class="emotion-hero-card">
-            <div id="emotion-hero-icon" class="hero-icon-display">
-              <i data-lucide="smile" style="width:52px; height:52px; color:var(--acid-lime);"></i>
-            </div>
-            <div id="emotion-hero-title" class="hero-emotion-name">HAPPY</div>
-            <div id="emotion-hero-conf" class="hero-emotion-conf">62.4% Model Confidence</div>
-          </div>
-
-          <h4 style="font-size:0.85rem; text-transform:uppercase; color:var(--text-muted); margin-bottom:0.75rem;">Confidence Across 8 Emotions:</h4>
-          <div id="emotion-prob-bars" class="prob-rows-container"></div>
-
-          <div style="background:var(--midnight-surface); padding:0.95rem; border-radius:var(--radius-sm); margin-top:1.25rem; border-left:3px solid var(--electric-cobalt);">
-            <div style="font-size:0.75rem; text-transform:uppercase; font-weight:800; color:var(--electric-cobalt-light); margin-bottom:0.25rem;">Acoustic Signature Telemetry</div>
-            <p id="emotion-acoustic-desc" style="font-size:0.82rem; color:var(--text-secondary); line-height:1.5;">
-              Acoustic feature analysis extracted via Mel-frequency filterbank representation.
-            </p>
-          </div>
+        <!-- Feature Importance -->
+        <div class="glass-card" style="margin-top: 2rem">
+          <h3
+            style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem"
+          >
+            Feature Importance Hierarchy (German Credit Dataset)
+          </h3>
+          <p
+            style="
+              font-size: 0.9rem;
+              color: var(--text-secondary);
+              margin-bottom: 1.5rem;
+            "
+          >
+            Gini impurity decrease across the 100-tree ensemble indicates that
+            loan amount, applicant age, and loan duration comprise over 58% of
+            all decision weight.
+          </p>
+          <div id="benchmark-feature-bars" class="feature-bars-col"></div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ====================================================================
-         SECTION 4: TASK 3 — HANDWRITTEN DIGIT RECOGNITION
-         ==================================================================== -->
-    <section id="section-handwriting" class="app-section">
-      <div class="section-header">
-        <span class="section-tag">Task 3 • Computer Vision AI</span>
-        <h2 class="section-title">Handwritten Digit Recognition</h2>
-        <p class="section-desc">
-          Interactive drawing studio with authentic MNIST Center-of-Mass normalization. Draw any number from 0 to 9 with touch or mouse, or test authentic MNIST digit samples.
-        </p>
-      </div>
-
-      <div class="handwriting-layout">
-        <!-- Canvas Studio -->
-        <div class="glass-card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
-            <h3 style="font-size:1.15rem; font-weight:800;">Interactive Drawing Studio</h3>
-            <span style="font-size:0.75rem; color:var(--acid-lime); font-family:var(--font-mono); font-weight:800;">CoM Normalized</span>
-          </div>
-
-          <div class="canvas-holder">
-            <canvas id="digit-drawing-canvas" class="drawing-canvas" width="280" height="280"></canvas>
-
-            <div class="canvas-toolbar">
-              <button id="digit-predict-now-btn" class="tool-btn" style="background:var(--acid-lime); color:var(--acid-lime-text); border-color:var(--acid-lime);">
-                <i data-lucide="play" style="width:14px; height:14px;"></i>
-                <span>Predict</span>
-              </button>
-              <button id="digit-clear-btn" class="tool-btn" title="Clear Canvas">
-                <i data-lucide="trash-2" style="width:14px; height:14px;"></i>
-                <span>Clear</span>
-              </button>
-              <button id="digit-undo-btn" class="tool-btn" title="Undo Stroke">
-                <i data-lucide="undo-2" style="width:14px; height:14px;"></i>
-                <span>Undo</span>
-              </button>
-              <button id="digit-eraser-btn" class="tool-btn" title="Eraser">
-                <i data-lucide="eraser" style="width:14px; height:14px;"></i>
-                <span>Eraser</span>
-              </button>
-              <button id="digit-upload-btn" class="tool-btn" title="Upload Image">
-                <i data-lucide="upload" style="width:14px; height:14px;"></i>
-                <span>Upload</span>
-              </button>
-              <input type="file" id="digit-file-input" accept="image/*" style="display:none;" />
-            </div>
-
-            <div style="display:flex; align-items:center; gap:0.75rem; margin-top:1rem; width:100%; max-width:280px;">
-              <span style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; font-weight:700;">Brush</span>
-              <input type="range" id="digit-brush-size" class="range-slider" min="12" max="36" value="24" />
-              <span id="digit-brush-val" style="font-family:var(--font-mono); font-size:0.8rem; font-weight:800; color:var(--acid-lime);">24px</span>
-            </div>
-          </div>
-
-          <!-- Presets -->
-          <div style="margin-top:1.5rem;">
-            <div style="font-size:0.8rem; font-weight:700; color:var(--text-muted); text-align:center; margin-bottom:0.5rem;">
-              Or test an authentic MNIST test sample (0–9):
-            </div>
-            <div class="digits-row-bar">
-              <button class="digit-chip-btn" data-sample-digit="0">0</button>
-              <button class="digit-chip-btn" data-sample-digit="1">1</button>
-              <button class="digit-chip-btn" data-sample-digit="2">2</button>
-              <button class="digit-chip-btn active" data-sample-digit="3">3</button>
-              <button class="digit-chip-btn" data-sample-digit="4">4</button>
-              <button class="digit-chip-btn" data-sample-digit="5">5</button>
-              <button class="digit-chip-btn" data-sample-digit="6">6</button>
-              <button class="digit-chip-btn" data-sample-digit="7">7</button>
-              <button class="digit-chip-btn" data-sample-digit="8">8</button>
-              <button class="digit-chip-btn" data-sample-digit="9">9</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Output Hero -->
-        <div class="glass-card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
-            <h3 style="font-size:1.15rem; font-weight:800;">Neural Network Inference</h3>
-            <span style="font-size:0.75rem; color:var(--acid-lime); font-family:var(--font-mono); font-weight:800;">94.61% Acc</span>
-          </div>
-
-          <div class="digit-result-hero">
-            <div id="digit-predicted-hero" class="digit-big-box">3</div>
-            <div class="digit-meta-col">
-              <span class="digit-output-title">Predicted Digit</span>
-              <span id="digit-predicted-conf" class="digit-conf-label acid-text">100.0% Confidence</span>
-              <span id="digit-latency-val" class="digit-latency-tag">Inference: 0.6 ms</span>
-            </div>
-          </div>
-
-          <!-- Normalized 28x28 Preview -->
-          <div class="preview-28-wrapper">
-            <canvas id="digit-preview-28" class="canvas-28" width="84" height="84"></canvas>
-            <div>
-              <div style="font-size:0.85rem; font-weight:800; color:var(--text-primary);">28 × 28 CoM Normalized Grid</div>
-              <div style="font-size:0.75rem; color:var(--text-muted);">
-                Digit cropped to 20×20 and centered by Center of Mass (CoM) to match authentic MNIST training.
-              </div>
-            </div>
-          </div>
-
-          <h4 style="font-size:0.85rem; text-transform:uppercase; color:var(--text-muted); margin-bottom:0.75rem;">10-Digit Probability Distribution:</h4>
-          <div id="digit-prob-bars"></div>
-
-          <div style="background:var(--midnight-surface); padding:0.85rem; border-radius:var(--radius-sm); margin-top:1.25rem; font-size:0.8rem; border-left:3px solid var(--electric-cobalt);">
-            <div style="font-weight:800; color:var(--electric-cobalt-light); margin-bottom:0.25rem;">Neural Architecture:</div>
-            <div style="color:var(--text-secondary); font-family:var(--font-mono);">
-              Input (784) ➔ Dense (256, ReLU) ➔ Dense (128, ReLU) ➔ Output (10, Softmax)
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         SECTION 5: BENCHMARKS & MODEL COMPARISONS
-         ==================================================================== -->
-    <section id="section-benchmarks" class="app-section">
-      <div class="section-header">
-        <span class="section-tag">Performance Analytics</span>
-        <h2 class="section-title">Model Benchmarks &amp; Comparative Evaluation</h2>
-        <p class="section-desc">
-          Systematic performance evaluation across all classification algorithms evaluated during the internship across Credit Risk, Speech Emotion, and Handwritten Digit Recognition.
-        </p>
-      </div>
-
-      <div class="persona-presets-bar">
-        <span style="font-size:0.8rem; font-weight:700; color:var(--text-muted);">Filter Task:</span>
-        <button class="persona-btn active-preset" data-bench-filter="all">All Models</button>
-        <button class="persona-btn" data-bench-filter="credit">Task 1: Credit Scoring</button>
-        <button class="persona-btn" data-bench-filter="emotion">Task 2: Speech Emotion</button>
-        <button class="persona-btn" data-bench-filter="handwriting">Task 3: Handwritten Digits</button>
-      </div>
-
-      <div class="benchmark-table-wrapper">
-        <table id="benchmark-table" class="benchmark-table">
-          <thead>
-            <tr>
-              <th>Task</th>
-              <th>Algorithm</th>
-              <th>Dataset</th>
-              <th>Accuracy</th>
-              <th>ROC-AUC / F1</th>
-              <th>Selection</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr data-category="credit">
-              <td><strong>Task 1: Credit Scoring</strong></td>
-              <td>Random Forest (100 Trees)</td>
-              <td>German Credit (1000)</td>
-              <td><strong class="acid-text">74.50%</strong></td>
-              <td>0.753</td>
-              <td>
-                <span class="pill-winner">
-                  <i data-lucide="award" style="width:13px; height:13px; vertical-align:middle; margin-right:3px;"></i>
-                  Selected Best
-                </span>
-              </td>
-            </tr>
-            <tr data-category="credit">
-              <td>Task 1: Credit Scoring</td>
-              <td>Logistic Regression</td>
-              <td>German Credit (1000)</td>
-              <td>74.50%</td>
-              <td>0.763</td>
-              <td><span style="color:var(--text-muted);">Baseline</span></td>
-            </tr>
-            <tr data-category="credit">
-              <td>Task 1: Credit Scoring</td>
-              <td>Decision Tree</td>
-              <td>German Credit (1000)</td>
-              <td>67.50%</td>
-              <td>0.596</td>
-              <td><span style="color:#ff3344;">Overfit</span></td>
-            </tr>
-            <tr data-category="emotion">
-              <td><strong>Task 2: Speech Emotion</strong></td>
-              <td>MLP Neural Network (256-128)</td>
-              <td>RAVDESS (1440 audio)</td>
-              <td><strong class="acid-text">60.42%</strong></td>
-              <td>Angry (0.81 F1)</td>
-              <td>
-                <span class="pill-winner">
-                  <i data-lucide="award" style="width:13px; height:13px; vertical-align:middle; margin-right:3px;"></i>
-                  Selected Best
-                </span>
-              </td>
-            </tr>
-            <tr data-category="emotion">
-              <td>Task 2: Speech Emotion</td>
-              <td>Random Forest (200 Trees)</td>
-              <td>RAVDESS (1440 audio)</td>
-              <td>60.42%</td>
-              <td>0.60 F1</td>
-              <td><span style="color:var(--text-muted);">Comparable</span></td>
-            </tr>
-            <tr data-category="handwriting">
-              <td><strong>Task 3: Handwritten Digits</strong></td>
-              <td>MLP Neural Network (256-128)</td>
-              <td>MNIST (70,000)</td>
-              <td><strong class="acid-text">94.61%</strong></td>
-              <td>0.95 Macro F1</td>
-              <td>
-                <span class="pill-winner">
-                  <i data-lucide="award" style="width:13px; height:13px; vertical-align:middle; margin-right:3px;"></i>
-                  Selected Best
-                </span>
-              </td>
-            </tr>
-            <tr data-category="handwriting">
-              <td>Task 3: Handwritten Digits</td>
-              <td>Random Forest (100 Trees)</td>
-              <td>MNIST (70,000)</td>
-              <td>94.46%</td>
-              <td>0.94 Macro F1</td>
-              <td><span style="color:var(--text-muted);">Runner Up</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Feature Importance -->
-      <div class="glass-card" style="margin-top:2rem;">
-        <h3 style="font-size:1.15rem; font-weight:800; margin-bottom:0.5rem;">Feature Importance Hierarchy (German Credit Dataset)</h3>
-        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.5rem;">
-          Gini impurity decrease across the 100-tree ensemble indicates that loan amount, applicant age, and loan duration comprise over 58% of all decision weight.
-        </p>
-        <div id="benchmark-feature-bars" class="feature-bars-col"></div>
-      </div>
-    </section>
-
-    <!-- ====================================================================
+      <!-- ====================================================================
          SECTION 6: STEP-BY-STEP DOCUMENTATION & DEPLOYMENT GUIDE
          ==================================================================== -->
-    <section id="section-docs" class="app-section">
-      <div class="section-header">
-        <span class="section-tag">Documentation &amp; Deployment</span>
-        <h2 class="section-title">Complete Step-by-Step Developer Guide</h2>
-        <p class="section-desc">
-          Comprehensive instructions for running locally, deploying live to Netlify in 30 seconds, and synchronizing with GitHub.
+      <section id="section-docs" class="app-section">
+        <div class="section-header">
+          <span class="section-tag">Documentation &amp; Deployment</span>
+          <h2 class="section-title">Complete Step-by-Step Developer Guide</h2>
+          <p class="section-desc">
+            Comprehensive instructions for running locally, deploying live to
+            Netlify in 30 seconds, and synchronizing with GitHub.
+          </p>
+        </div>
+
+        <div class="guide-steps-list">
+          <!-- Step 1 -->
+          <div class="guide-step-card">
+            <div class="step-num-bubble">1</div>
+            <div class="step-content">
+              <h3 class="step-title">Run Locally with Python Web Server</h3>
+              <p style="font-size: 0.95rem; color: var(--text-secondary)">
+                Run Python's built-in HTTP server to serve the binary weights
+                and models:
+              </p>
+              <div class="code-block">
+                cd "D:\CodeAlpha-Tasks" python -m http.server 8080
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted)">
+                Then open
+                <a
+                  href="http://localhost:8080"
+                  target="_blank"
+                  style="color: var(--acid-lime)"
+                  >http://localhost:8080</a
+                >
+                in your browser.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="guide-step-card">
+            <div class="step-num-bubble">2</div>
+            <div class="step-content">
+              <h3 class="step-title">
+                Deploying Live to Netlify (100% Free &amp; Instant)
+              </h3>
+              <p
+                style="
+                  font-size: 0.95rem;
+                  color: var(--text-secondary);
+                  margin-bottom: 0.5rem;
+                "
+              >
+                You have two simple options to host this app live:
+              </p>
+              <h4
+                style="
+                  font-size: 0.95rem;
+                  font-weight: 800;
+                  color: var(--acid-lime);
+                  margin-top: 0.75rem;
+                "
+              >
+                Option A: Drag &amp; Drop to Netlify Drop (30 Seconds)
+              </h4>
+              <ol
+                style="
+                  margin-left: 1.5rem;
+                  font-size: 0.9rem;
+                  color: var(--text-secondary);
+                  line-height: 1.7;
+                "
+              >
+                <li>
+                  Open
+                  <a
+                    href="https://app.netlify.com/drop"
+                    target="_blank"
+                    style="color: var(--acid-lime)"
+                    >https://app.netlify.com/drop</a
+                  >
+                  in your browser.
+                </li>
+                <li>
+                  Drag and drop the entire
+                  <code>D:\CodeAlpha-Tasks</code> folder into the browser
+                  window.
+                </li>
+                <li>
+                  Netlify will instantly deploy your website and provide a free
+                  live URL (e.g.
+                  <code>https://codealpha-ml-studio.netlify.app</code>)!
+                </li>
+              </ol>
+              <h4
+                style="
+                  font-size: 0.95rem;
+                  font-weight: 800;
+                  color: var(--electric-cobalt-light);
+                  margin-top: 1rem;
+                "
+              >
+                Option B: Connect with GitHub for Continuous Deployment
+              </h4>
+              <ol
+                style="
+                  margin-left: 1.5rem;
+                  font-size: 0.9rem;
+                  color: var(--text-secondary);
+                  line-height: 1.7;
+                "
+              >
+                <li>
+                  Sign in to
+                  <a
+                    href="https://app.netlify.com"
+                    target="_blank"
+                    style="color: var(--electric-cobalt-light)"
+                    >Netlify</a
+                  >.
+                </li>
+                <li>
+                  Click <strong>"Add new site"</strong> ➔
+                  <strong>"Import an existing project"</strong> ➔ choose
+                  <strong>GitHub</strong>.
+                </li>
+                <li>
+                  Select your repository:
+                  <code>fariha-shah/CodeAlpha_Tasks</code>.
+                </li>
+                <li>
+                  Set <strong>Publish directory</strong> to
+                  <code>.</code> (root) and click <strong>Deploy Site</strong>.
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="guide-step-card">
+            <div class="step-num-bubble">3</div>
+            <div class="step-content">
+              <h3 class="step-title">Pushing Updates to GitHub</h3>
+              <p style="font-size: 0.95rem; color: var(--text-secondary)">
+                Run the following Git commands in PowerShell to synchronize
+                updates:
+              </p>
+              <div class="code-block">
+                cd "D:\CodeAlpha-Tasks" git add . git commit -m "Replace all
+                emojis with Lucide icons" git push origin main
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Deploy Modal -->
+    <div id="deploy-modal" class="modal-overlay">
+      <div class="modal-card">
+        <button
+          id="deploy-modal-close"
+          class="modal-close-btn"
+          aria-label="Close modal"
+        >
+          <i data-lucide="x" style="width: 18px; height: 18px"></i>
+        </button>
+        <div
+          style="
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--acid-lime);
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+          "
+        >
+          Live Deployment
+        </div>
+        <h3 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 1rem">
+          How to Go Live on Netlify
+        </h3>
+        <p
+          style="
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+          "
+        >
+          Your project is already configured with <code>netlify.toml</code>,
+          binary MIME headers, and 100% client-side inference.
         </p>
-      </div>
-
-      <div class="guide-steps-list">
-        <!-- Step 1 -->
-        <div class="guide-step-card">
-          <div class="step-num-bubble">1</div>
-          <div class="step-content">
-            <h3 class="step-title">Run Locally with Python Web Server</h3>
-            <p style="font-size:0.95rem; color:var(--text-secondary);">
-              Run Python's built-in HTTP server to serve the binary weights and models:
-            </p>
-            <div class="code-block">
-cd "D:\CodeAlpha-Tasks"
-python -m http.server 8080
-            </div>
-            <p style="font-size:0.85rem; color:var(--text-muted);">
-              Then open <a href="http://localhost:8080" target="_blank" style="color:var(--acid-lime);">http://localhost:8080</a> in your browser.
-            </p>
-          </div>
+        <div
+          style="
+            background: var(--midnight-surface);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-subtle);
+          "
+        >
+          <strong
+            style="
+              color: var(--text-primary);
+              display: block;
+              margin-bottom: 0.25rem;
+            "
+            >1-Click Drag &amp; Drop:</strong
+          >
+          <span style="font-size: 0.85rem; color: var(--text-secondary)">
+            Open
+            <a
+              href="https://app.netlify.com/drop"
+              target="_blank"
+              style="color: var(--acid-lime); text-decoration: underline"
+              >app.netlify.com/drop</a
+            >
+            and drag the <code>D:\CodeAlpha-Tasks</code> folder into the
+            browser.
+          </span>
         </div>
-
-        <!-- Step 2 -->
-        <div class="guide-step-card">
-          <div class="step-num-bubble">2</div>
-          <div class="step-content">
-            <h3 class="step-title">Deploying Live to Netlify (100% Free &amp; Instant)</h3>
-            <p style="font-size:0.95rem; color:var(--text-secondary); margin-bottom:0.5rem;">
-              You have two simple options to host this app live:
-            </p>
-            <h4 style="font-size:0.95rem; font-weight:800; color:var(--acid-lime); margin-top:0.75rem;">Option A: Drag &amp; Drop to Netlify Drop (30 Seconds)</h4>
-            <ol style="margin-left:1.5rem; font-size:0.9rem; color:var(--text-secondary); line-height:1.7;">
-              <li>Open <a href="https://app.netlify.com/drop" target="_blank" style="color:var(--acid-lime);">https://app.netlify.com/drop</a> in your browser.</li>
-              <li>Drag and drop the entire <code>D:\CodeAlpha-Tasks</code> folder into the browser window.</li>
-              <li>Netlify will instantly deploy your website and provide a free live URL (e.g. <code>https://codealpha-ml-studio.netlify.app</code>)!</li>
-            </ol>
-            <h4 style="font-size:0.95rem; font-weight:800; color:var(--electric-cobalt-light); margin-top:1rem;">Option B: Connect with GitHub for Continuous Deployment</h4>
-            <ol style="margin-left:1.5rem; font-size:0.9rem; color:var(--text-secondary); line-height:1.7;">
-              <li>Sign in to <a href="https://app.netlify.com" target="_blank" style="color:var(--electric-cobalt-light);">Netlify</a>.</li>
-              <li>Click <strong>"Add new site"</strong> ➔ <strong>"Import an existing project"</strong> ➔ choose <strong>GitHub</strong>.</li>
-              <li>Select your repository: <code>fariha-shah/CodeAlpha_Tasks</code>.</li>
-              <li>Set <strong>Publish directory</strong> to <code>.</code> (root) and click <strong>Deploy Site</strong>.</li>
-            </ol>
-          </div>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="guide-step-card">
-          <div class="step-num-bubble">3</div>
-          <div class="step-content">
-            <h3 class="step-title">Pushing Updates to GitHub</h3>
-            <p style="font-size:0.95rem; color:var(--text-secondary);">
-              Run the following Git commands in PowerShell to synchronize updates:
-            </p>
-            <div class="code-block">
-cd "D:\CodeAlpha-Tasks"
+        <div
+          style="
+            background: var(--midnight-surface);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-subtle);
+          "
+        >
+          <strong
+            style="
+              color: var(--text-primary);
+              display: block;
+              margin-bottom: 0.25rem;
+            "
+            >Sync with GitHub:</strong
+          >
+          <pre class="code-block" style="margin: 0.5rem 0 0">
 git add .
-git commit -m "Replace all emojis with Lucide icons"
-git push origin main
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Deploy Modal -->
-  <div id="deploy-modal" class="modal-overlay">
-    <div class="modal-card">
-      <button id="deploy-modal-close" class="modal-close-btn" aria-label="Close modal">
-        <i data-lucide="x" style="width:18px; height:18px;"></i>
-      </button>
-      <div style="font-size:0.8rem; text-transform:uppercase; color:var(--acid-lime); font-weight:800; margin-bottom:0.25rem;">Live Deployment</div>
-      <h3 style="font-size:1.6rem; font-weight:800; margin-bottom:1rem;">How to Go Live on Netlify</h3>
-      <p style="font-size:0.95rem; color:var(--text-secondary); line-height:1.6; margin-bottom:1.25rem;">
-        Your project is already configured with <code>netlify.toml</code>, binary MIME headers, and 100% client-side inference.
-      </p>
-      <div style="background:var(--midnight-surface); padding:1rem; border-radius:var(--radius-sm); margin-bottom:1rem; border:1px solid var(--border-subtle);">
-        <strong style="color:var(--text-primary); display:block; margin-bottom:0.25rem;">1-Click Drag &amp; Drop:</strong>
-        <span style="font-size:0.85rem; color:var(--text-secondary);">
-          Open <a href="https://app.netlify.com/drop" target="_blank" style="color:var(--acid-lime); text-decoration:underline;">app.netlify.com/drop</a> and drag the <code>D:\CodeAlpha-Tasks</code> folder into the browser.
-        </span>
-      </div>
-      <div style="background:var(--midnight-surface); padding:1rem; border-radius:var(--radius-sm); margin-bottom:1rem; border:1px solid var(--border-subtle);">
-        <strong style="color:var(--text-primary); display:block; margin-bottom:0.25rem;">Sync with GitHub:</strong>
-        <pre class="code-block" style="margin:0.5rem 0 0;">git add .
 git commit -m "Deploy latest CodeAlpha ML Studio"
-git push origin main</pre>
+git push origin main</pre
+          >
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Toast Notification Container -->
-  <div id="toast-container" class="toast-container"></div>
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>
-      <strong>CodeAlpha Machine Learning Internship</strong> • Built by <strong>Fareeha</strong>
-    </p>
-    <p style="font-size:0.8rem; margin-top:0.35rem; color:var(--text-muted);">
-      Midnight Black • Electric Cobalt Blue • Acid Lime Aesthetic • Powered by Lucide Icons.
-    </p>
-  </footer>
+    <!-- Footer -->
+    <footer class="footer">
+      <p>
+        <strong>CodeAlpha Machine Learning Internship</strong> • Built by
+        <strong>Fareeha</strong>
+      </p>
+      <p
+        style="font-size: 0.8rem; margin-top: 0.35rem; color: var(--text-muted)"
+      >
+        Midnight Black • Electric Cobalt Blue • Acid Lime Aesthetic • Powered by
+        Lucide Icons.
+      </p>
+    </footer>
 
-  <!-- Scripts -->
-  <script src="js/credit_model.js"></script>
-  <script src="js/emotion_model.js"></script>
-  <script src="js/handwriting_model.js"></script>
-  <script src="js/benchmarks.js"></script>
-  <script src="js/app.js"></script>
-</body>
+    <!-- Scripts -->
+    <script src="js/credit_model.js"></script>
+    <script src="js/emotion_model.js"></script>
+    <script src="js/handwriting_model.js"></script>
+    <script src="js/benchmarks.js"></script>
+    <script src="js/app.js"></script>
+  </body>
 </html>
