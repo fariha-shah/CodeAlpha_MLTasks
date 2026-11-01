@@ -7,7 +7,7 @@
 ![Inference Engine](https://img.shields.io/badge/Inference-Client--Side%20Neural%20ML-2563eb?style=for-the-badge&logo=javascript&logoColor=white)
 ![Icons](https://img.shields.io/badge/Icons-Lucide%20Icons%20(Zero%20Emojis)-ccff00?style=for-the-badge)
 
-### Live Interactive Web App: [Deployable on Netlify](https://app.netlify.com/drop) | Repository: [fariha-shah/CodeAlpha_Tasks](https://github.com/fariha-shah/CodeAlpha_Tasks)
+### Live Interactive Web App: [Deployable on Netlify](https://app.netlify.com/drop) | Repository: [fariha-shah/CodeAlpha_MLTasks](https://github.com/fariha-shah/CodeAlpha_MLTasks)
 
 <p align="center">
   <strong>An artisan Machine Learning Web Studio unifying 3 production-grade ML tasks into a high-performance, human-crafted dashboard styled in Midnight Black, Electric Cobalt Blue, and Acid Lime with Lucide Icons and zero server dependencies.</strong>
@@ -138,7 +138,7 @@ Open your browser and navigate to: **`http://localhost:8080`**
 
 ### Method 2: Connect via GitHub
 1. In Netlify Dashboard, click **"Add new site"** ➔ **"Import an existing project"** ➔ **GitHub**.
-2. Select `fariha-shah/CodeAlpha_Tasks`.
+2. Select `fariha-shah/CodeAlpha_MLTasks`.
 3. Set **Publish directory** to `.` and click **Deploy Site**.
 
 ---
@@ -160,5 +160,5 @@ git push origin main
 - **Domain**: Machine Learning & Artificial Intelligence
 - **Intern Name**: **Fareeha**
 - **GitHub**: [@fariha-shah](https://github.com/fariha-shah)
-- **Repository**: [CodeAlpha_Tasks](https://github.com/fariha-shah/CodeAlpha_Tasks)
+- **Repository**: [CodeAlpha_MLTasks](https://github.com/fariha-shah/CodeAlpha_MLTasks)
 - **Internship Period**: May – June 2026
