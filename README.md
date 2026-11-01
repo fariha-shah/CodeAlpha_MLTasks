@@ -3,7 +3,7 @@
 <div align="center">
 
 ![CodeAlpha ML Studio](https://img.shields.io/badge/CodeAlpha-Machine%20Learning%20Internship-2563eb?style=for-the-badge&logo=python&logoColor=white)
-![Netlify Ready](https://img.shields.io/badge/Netlify-Ready%20to%20Deploy-ccff00?style=for-the-badge&logo=netlify&logoColor=06080d)
+
 ![Inference Engine](https://img.shields.io/badge/Inference-Client--Side%20Neural%20ML-2563eb?style=for-the-badge&logo=javascript&logoColor=white)
 ![Icons](https://img.shields.io/badge/Icons-Lucide%20Icons%20(Zero%20Emojis)-ccff00?style=for-the-badge)
 
